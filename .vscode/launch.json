@@ -5,7 +5,7 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceRoot}/bin/src/leetcode_Debug.exe",
+            "program": "${workspaceRoot}/bin/src/leetcode.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
