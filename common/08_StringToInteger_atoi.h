@@ -27,13 +27,15 @@ class Solution
             ++i;
         }
 
+        while ((i < len) && s[i] == '0') {
+            ++i;
+        }
+
         int result = 0;
         int digitArray[256];
         int digitCount = 0;
-        bool limitCrossed = false;
-        bool gotFirstNonZero = false;
-        int maxInt = numeric_limits<int>::max();
-        int minInt = numeric_limits<int>::min();
+        int maxInt = ~(1 << 31);
+        int minInt = -maxInt - 1;
         while ((i < len)) {
             char c = s[i++];
             if(c < '0' || c > '9') {
@@ -41,45 +43,30 @@ class Solution
             }
             int n = (int)(c - '0');
 
-            if((n == 0) && !gotFirstNonZero) {
-                continue;
-            }
-            else {
-                gotFirstNonZero = true;
-                digitArray[digitCount++] = n;
-                if((digitCount-1) > 9) {
-                    if (positive) result = maxInt;
-                    else result = minInt;
-                    return result;
-                }
+            digitArray[digitCount++] = n;
+            if((((digitCount-1) > 9) || ((digitCount == 10) && (digitArray[0] > 2)))) {
+                if (positive) result = maxInt;
+                else result = minInt;
+                return result;
             }
         }
 
         int digitIndex = 0;
         int sign = positive ? 1 : -1;
-        while (digitIndex < digitCount)
-        {
+        bool limitCrossed = false;
+        while (digitIndex < digitCount) {
             int mul = pow(10, ((digitCount-1) - digitIndex));
             int d = digitArray[digitIndex++];
             int num = d*mul;
-            int temp = result + num*sign;
-
-            if(positive && (temp < result)) {
-                // ASSERT(0);
+            if(( positive && (result > (maxInt-num))) ||
+               (!positive && (result < (minInt+num)))) {
                 limitCrossed = true;
                 break;
             }
-            else if(!positive && (temp > result))
-            {
-                // ASSERT(0);
-                limitCrossed = true;
-                break;
-            }
-            result = temp;
+            result += num*sign;
         }
 
-        if(limitCrossed)
-        {
+        if(limitCrossed) {
             if (positive) result = maxInt;
             else result = minInt;
         }
@@ -89,16 +76,9 @@ class Solution
     void
     driver()
     {
-        int a = 0;
-        string s = "2147483648";
+        string s = "      -321321sdfads";
         int res = myAtoi(s);
         printf("the num is %d\n", res);
-
-#ifdef HAS_UBSAN
-        printf("HAS UBSAN!\n");
-#else
-        printf("DOES NOT HAVE UBSAN!\n");
-#endif
     }
 };
 

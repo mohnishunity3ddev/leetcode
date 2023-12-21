@@ -19,6 +19,8 @@ if (USE_DEBUG)
   add_definitions(-DDEBUG)
 endif()
 
+set(CMAKE_BUILD_TYPE Debug)
+
 ###### Find OpenGL
 # find_package(OpenGL REQUIRED)
 
