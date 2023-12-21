@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dirName=$(dirname "$0")
+dirName="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $dirName/_variables.sh
 
 cmake -S $PROJECT_ROOT_DIR_PATH -B $BIN_DIR_PATH -GNinja

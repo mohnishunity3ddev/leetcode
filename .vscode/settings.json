@@ -24,8 +24,8 @@
     "terminal.integrated.defaultProfile.windows": "Default Profile",
     "terminal.integrated.profiles.linux": {
         "Mani": {
-            "path": "/bin/bash",
-            "args": ["-l", "-c", "source ${workspaceFolder}/build_scripts/linux/set_aliases.sh"]
+            "path": "/usr/bin/bash",
+            "args": ["--init-file", "${workspaceFolder}/build_scripts/linux/set_aliases.sh"]
         }
     },
     "terminal.integrated.defaultProfile.linux": "Mani",
