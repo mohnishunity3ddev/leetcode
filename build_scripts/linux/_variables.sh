@@ -1,8 +1,8 @@
 #/bin/bash
 
 # all variables used in ps1 files
-PROJECT_NAME="template_vscode_project_chapterwise"
-PROJECT_ROOT_DIR_PATH="/home/mohnish/Desktop/personal-projects/template_vscode_project_chapterwise"
+PROJECT_NAME="leetcode"
+PROJECT_ROOT_DIR_PATH="/home/mani/Desktop/personal-projects/leetcode"
 
 PROJECT_ROOT_PATH_RELATIVE_FROM_SCRIPT="../.."
 BUILD_FOLDER_NAME="bin"

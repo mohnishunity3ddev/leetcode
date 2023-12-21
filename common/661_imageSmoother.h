@@ -1,6 +1,7 @@
 #if !defined(IMAGE_SMOOTHER_H)
 
 #include <vector>
+#include <cmath>
 
 using namespace std;
 

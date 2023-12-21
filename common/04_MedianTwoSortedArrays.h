@@ -13,7 +13,7 @@ class Solution
     findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
         int merged[2048];
         int c1 = 0, c2 = 0, mergeCount = 0;
-        while((c1 < size1) && (c2 < size2)) {
+        while((c1 < nums1.size()) && (c2 < nums2.size())) {
             int n1 = nums1[c1];
             int n2 = nums2[c2];
             int n = 0;
@@ -31,7 +31,7 @@ class Solution
         while(c1 < nums1.size()) {
             merged[mergeCount++] = nums1[c1++];
         }
-        while(c2 < num2.size()) {
+        while(c2 < nums2.size()) {
             merged[mergeCount++] = nums2[c2++];
         }
 
