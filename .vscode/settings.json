@@ -23,13 +23,16 @@
         }
     },
     "terminal.integrated.defaultProfile.windows": "Default Profile",
-    "terminal.integrated.profiles.linux": {
-        "Mani": {
-            "path": "/usr/bin/bash",
-            "args": ["--init-file", "${workspaceFolder}/build_scripts/linux/set_aliases.sh"]
-        }
+    // "terminal.integrated.profiles.linux": {
+    //     "Mani": {
+    //         "path": "/usr/bin/zsh",
+    //         "args": ["--init-file", "source ${workspaceFolder}/build_scripts/linux/set_aliases.sh"]
+    //     }
+    // },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.env.linux": {
+        "ZSH_INIT_COMMAND": "source ${workspaceFolder}/build_scripts/linux/set_aliases.sh"
     },
-    "terminal.integrated.defaultProfile.linux": "Mani",
     "editor.trimAutoWhitespace": true,
     "files.trimTrailingWhitespace": true,
     "files.associations": {
