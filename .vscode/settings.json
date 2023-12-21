@@ -4,6 +4,7 @@
     "editor.fontLigatures": true,
     "editor.fontWeight": "normal",
     "editor.fontVariations": true,
+    "editor.minimap.enabled": false,
     // "editor.letterSpacing": 1,
     // "terminal.integrated.fontFamily": "'agave Nerd Font Mono r','Source Code Pro', 'JetBrainsMono Nerd Font Mono','Google Sans Mono','IosevkaTerm Nerd Font Mono','Maple Mono NF','Oxygen Mono Regular','DaddyTimeMono Nerd Font Mono Regular', 'EnvyCodeR Nerd Font Mono', 'Hurmit Nerd Font Mono'",
     "terminal.integrated.fontSize": 12,
