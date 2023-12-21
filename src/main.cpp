@@ -2,7 +2,7 @@
 #include <vector>
 #include <stdio.h>
 
-#include <08_StringToInteger_atoi.h>
+#include <07_ReverseInteger.h>
 
 using namespace std;
 

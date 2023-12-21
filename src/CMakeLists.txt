@@ -22,17 +22,23 @@ else()
     set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS})
 
     # lots of warnings and all warnings as errors
-    add_compile_options(-Wall -Wextra -pedantic -Werror)
+    add_compile_options(-Wall -Wextra -pedantic -Werror -Wunused-variable)
 
     # Enable clang ubsan when in debug mode
-    message("Adding ubsan!")
-    set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined)
-    # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=integer -fno-sanitize-recover=integer -fsanitize-coverage=inline-8bit-counters -O0)
-    # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=nullability)
-    # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=implicit-conversion)
-    # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=array-bounds)
-    # add_compile_options(-fno-omit-frame-pointer)
-    message("cmake linker flags: " ${CMAKE_EXE_LINKER_FLAGS})
+    # message("Adding ubsan!")
+    # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined)
+    # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=integer -fno-sanitize-recover=integer -fsanitize-coverage=inline-8bit-counters -O0)
+    # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=nullability)
+    # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=implicit-conversion)
+    # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=array-bounds)
+    # # add_compile_options(-fno-omit-frame-pointer)
+    # message("cmake linker flags: " ${CMAKE_EXE_LINKER_FLAGS})
+    set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -fsanitize=undefined,address,integer)
+    set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined,address,integer)
+
+    # Add any other flags or options you need
+    # For example, to disable sanitizer recovery:
+    # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fno-sanitize-recover=integer")
 
     target_compile_options(leetcode PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
     target_link_options(leetcode PRIVATE ${CMAKE_EXE_LINKER_FLAGS})
