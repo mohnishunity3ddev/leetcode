@@ -48,6 +48,7 @@ else()
 endif()
 
 if(TARGET SharedUtils)
+    message(STATUS "MAIN adding SharedUtils")
     target_link_libraries(leetcode SharedUtils)
 endif()
 
