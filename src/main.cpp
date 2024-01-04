@@ -9,20 +9,7 @@ using namespace std;
 int
 main()
 {
-    linked_list<f32> ll;
-
-    ll.display();
-
-    ll.add(1.5f);
-
-    ll.add(2.33f);
-
-    ll.add(5.23f);
-
-    ll.removeAt(1);
-
-    ll.clear();
-    ll.display();
+    exampleWithRandoms();
 
     return 0;
 }

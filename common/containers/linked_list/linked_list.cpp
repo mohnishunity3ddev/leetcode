@@ -1,136 +1,36 @@
 #include "linked_list.h"
+#include <random>
 
-template<typename T>
-linked_list<T>::~linked_list() { clear(); }
-
-template <typename T>
-bool
-linked_list<T>::isEmpty()
-{
-    bool result = ((head == nullptr) && (size == 0));
-    return result;
-}
-
-template <typename T>
 void
-linked_list<T>::add(T val)
+driver()
 {
-    node *n = new node(val);
-    if (isEmpty())
-    {
-        head = n;
-        size = 1;
-    }
-    else
-    {
-        node *t = head;
-        while (t->next != nullptr)
-        {
-            t = t->next;
-        }
-        t->next = n;
-        size++;
-    }
+    linked_list<f32> ll;
 
-    std::cout << "added " << val << "\n";
-    display();
+    ll.display();
+
+    ll.add(1.5f);
+    ll.add(2.33f);
+    ll.add(5.23f);
+
+    ll.removeAt(1);
+
+    ll.clear();
+    ll.display();
 }
 
-template <typename T>
 void
-linked_list<T>::removeAt(i32 index)
+exampleWithRandoms()
 {
-    if (index >= size || index < 0)
-    {
-        std::cout << "Out of bounds access. The list has only " << size
-                  << " items and you are trying to access " << index
-                  << " index.\n";
-        return;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::uniform_int_distribution<int> distribution(1, 100);
+    linked_list<i32> ll;
+
+    for (i32 i = 0; i < 20; ++i) {
+        i32 n = distribution(gen);
+        ll.add(n);
     }
 
-    node *c = head;
-    node *p = c;
-    for (i32 i = 0; i < index; ++i)
-    {
-        p = c;
-        c = c->next;
-    }
-
-    T val = c->value;
-    node *n = c;
-    p->next = c->next;
-    delete n;
-    size--;
-
-    std::cout << "removed " << val << "\n";
-    display();
-}
-
-template <typename T>
-void
-linked_list<T>::remove(T val)
-{
-    node *c = head;
-    node *p = c;
-
-    while (c != nullptr && c->value != val)
-    {
-        p = c;
-        c = c->next;
-    }
-
-    if (c == nullptr)
-    {
-        printf("%d not found.\n");
-        return;
-    }
-
-    node *n = c;
-    p->next = c->next;
-    delete n;
-    size--;
-
-    std::cout << "removed " << val << "\n";
-    display();
-}
-
-template <typename T>
-i32
-linked_list<T>::getCount()
-{
-    return size;
-}
-
-template <typename T>
-void
-linked_list<T>::display()
-{
-    if (isEmpty())
-    {
-        std::cout << "the list is empty!\n";
-        return;
-    }
-    std::cout << "list with size " << size << " is ";
-    node *c = head;
-    while (c != nullptr)
-    {
-        std::cout << " ==> " << c->value;
-        c = c->next;
-    }
-    std::cout << " ==> end.\n\n";
-}
-
-template <typename T>
-void
-linked_list<T>::clear()
-{
-    node *c = head;
-    while (c != nullptr)
-    {
-        node *n = c;
-        c = c->next;
-        delete n;
-    }
-    size = 0;
-    head = nullptr;
+    ll.display();
 }
