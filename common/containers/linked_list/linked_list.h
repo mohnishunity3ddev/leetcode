@@ -2,6 +2,7 @@
 
 #include "defines.h"
 #include <iostream>
+#include <random>
 
 template <typename T>
 struct ll_node
@@ -20,7 +21,7 @@ struct ll_node
     }
 
     ~ll_node() {
-        std::cout << "destructor for node value " << value << " called!\n";
+        // std::cout << "destructor for node value " << value << " called!\n";
     }
 };
 #define node ll_node<T>
@@ -32,7 +33,11 @@ struct linked_list
     i32 size = 0;
 
     linked_list() = default;
-    ~linked_list() { clear(); }
+    ~linked_list()
+    {
+        std::cout << "destructor for linked list called!\n";
+        clear();
+    }
 
     bool
     isEmpty()
@@ -61,8 +66,51 @@ struct linked_list
             size++;
         }
 
-        std::cout << "added " << val << "\n";
-        display();
+        // std::cout << "added " << val << "\n";
+        // display();
+    }
+
+    void addAt(i32 index, T val) {
+        if (index >= size || index < 0)
+        {
+            std::cout << "Out of bounds access. The list has only " << size
+                      << " items and you are trying to access " << index
+                      << " index.\n";
+            return;
+        }
+        node *n = new node(val);
+        if(index == 0) {
+            n->next = head;
+            head = n;
+            return;
+        }
+
+        node *c = head;
+        node *p = c;
+        for (i32 i = 0; i < index; ++i) {
+            p = c;
+            c = c->next;
+        }
+
+        p->next = n;
+        n->next = c;
+    }
+
+    void update(i32 index, T val) {
+        if (index >= size || index < 0)
+        {
+            std::cout << "Out of bounds access. The list has only " << size
+                      << " items and you are trying to access " << index
+                      << " index.\n";
+            return;
+        }
+
+        node *c = head;
+        for(i32 i = 0; i < index; ++i) {
+            c = c->next;
+        }
+        ASSERT(c != nullptr);
+        c->value = val;
     }
 
     void
@@ -90,8 +138,8 @@ struct linked_list
         delete n;
         size--;
 
-        std::cout << "removed " << val << "\n";
-        display();
+        // std::cout << "removed " << val << "\n";
+        // display();
     }
 
     void
@@ -117,8 +165,8 @@ struct linked_list
         delete n;
         size--;
 
-        std::cout << "removed " << val << "\n";
-        display();
+        // std::cout << "removed " << val << "\n";
+        // display();
     }
 
     i32
@@ -135,7 +183,8 @@ struct linked_list
             std::cout << "the list is empty!\n";
             return;
         }
-        std::cout << "list with size " << size << " is ";
+        // std::cout << "list with size " << size << " is ";
+        std::cout << "Head";
         node *c = head;
         while (c != nullptr)
         {
@@ -163,6 +212,22 @@ struct linked_list
 
 void driver();
 void exampleWithRandoms();
+
+template <typename T>
+void
+getRandomList(linked_list<T> *ll, i32 nItems)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    std::uniform_int_distribution<T> distribution(1, 20);
+
+    for (i32 i = 0; i < nItems; ++i)
+    {
+        i32 n = distribution(gen);
+        ll->add(n);
+    }
+}
 
 #define LINKED_LIST_H
 #endif // LINKED_LIST_H

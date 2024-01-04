@@ -1,5 +1,4 @@
 #include "linked_list.h"
-#include <random>
 
 void
 driver()
@@ -32,5 +31,11 @@ exampleWithRandoms()
         ll.add(n);
     }
 
+    ll.display();
+    ll.update(1, 23100);
+    ll.display();
+
+    ll.addAt(0, -1);
+    ll.addAt(3, -1);
     ll.display();
 }

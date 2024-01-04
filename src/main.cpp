@@ -1,15 +1,14 @@
 #include <iostream>
 #include <vector>
-#include <stdio.h>
 
-#include <containers/linked_list/linked_list.h>
+#include <containers/stack/double_ended_stack.h>
 
 using namespace std;
 
 int
 main()
 {
-    exampleWithRandoms();
-
+    solution sol;
+    sol.driver();
     return 0;
 }

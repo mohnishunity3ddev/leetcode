@@ -3,16 +3,18 @@
 #define LINKED_LIST_STACK 0
 #include "defines.h"
 #include <memory.h>
-#include <cstdio>
+#include <iostream>
 
 template <typename T>
 struct stack
 {
+  private:
     T *items;
     i32 top = -1;
     i32 capacity = 0;
     i32 size = 0;
 
+  public:
     stack(i32 reserveCapacity)
     {
         items = new T[reserveCapacity];
@@ -54,7 +56,20 @@ struct stack
             return -1;
         }
         T result = items[top--];
+        size--;
         return result;
+    }
+
+    void display() {
+        std::cout << "The stack is: \n";
+        T *curr = items + top;
+        for (i32 i = 0; i < size; ++i) {
+            std::cout << *(curr--) << "\n";
+        }
+    }
+
+    i32 getSize() {
+        return size;
     }
 
     ~stack()
@@ -75,11 +90,7 @@ driver()
     myStack.push(-12);
     myStack.push(100);
     myStack.push(-100);
-    printf("Stack Display:\n");
-    for(i32 i = (myStack.size-1); i >= 0; --i)
-    {
-        printf("%d\n", *(myStack.items + i));
-    }
+    myStack.display();
 
     i32 p = myStack.pop();
     p = myStack.pop();
