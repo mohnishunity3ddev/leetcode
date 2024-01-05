@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Solution
+class solution
 {
   public:
     int
@@ -76,7 +76,7 @@ class Solution
     void
     driver()
     {
-        string s = "      -321321sdfads";
+        string s = "      -000000321321321312312sdfads";
         int res = myAtoi(s);
         printf("the num is %d\n", res);
     }
