@@ -50,7 +50,10 @@ struct myRand
     }
 };
 
-myRand Rand(1, 1000000);
+myRand Rand(1, 10'000'000);
+
+#define MIN(a, b) ((a) < (b)) ? (a) : (b)
+
 
 #define DEFINES_H
 #endif
