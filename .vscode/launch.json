@@ -8,7 +8,7 @@
             "program": "${workspaceRoot}/bin/src/leetcode",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceRoot}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
