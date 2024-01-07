@@ -53,7 +53,35 @@ struct myRand
 myRand Rand(1, 10'000'000);
 
 #define MIN(a, b) ((a) < (b)) ? (a) : (b)
+#define ZERO_ARRAY(arr, size)                                                  \
+    for (int i = 0; i < (size); ++i)                                           \
+    {                                                                          \
+        (arr)[i] = 0;                                                          \
+    }
 
+// Returns the max value out of all the items in the given array.
+// also checks for negative values in the array.
+inline int
+maxValueInArray(int *arr, int size)
+{
+    int max = 0;
+    for (int i = 0; i < size; ++i)
+    {
+        int n = arr[i];
+        if (n < 0)
+        {
+            // IMPORTANT: Negatives numbers cannot be sorted using count sort.
+            // Error condition.
+            return -1;
+        }
+        if (n > max)
+        {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
 
 #define DEFINES_H
 #endif

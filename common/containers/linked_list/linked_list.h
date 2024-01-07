@@ -29,6 +29,7 @@ template <typename T>
 struct linked_list
 {
     node *head = nullptr;
+    node *tail = nullptr;
     i32 size = 0;
 
     linked_list() = default;
@@ -53,20 +54,15 @@ struct linked_list
         {
             head = n;
             size = 1;
+            tail = head;
         }
         else
         {
-            node *t = head;
-            while (t->next != nullptr)
-            {
-                t = t->next;
-            }
-            t->next = n;
+            ASSERT(tail != nullptr && tail->next == nullptr);
+            tail->next = n;
+            tail = n;
             size++;
         }
-
-        // std::cout << "added " << val << "\n";
-        // display();
     }
 
     void addAt(i32 index, T val) {
@@ -123,6 +119,21 @@ struct linked_list
             return;
         }
 
+        // special case for advancing head.
+        if(index == 0)
+        {
+            node *n = head;
+            head = head->next;
+            T value = n->value;
+            delete n;
+            size--;
+            if(head == nullptr)
+            {
+                tail = nullptr;
+            }
+            return;
+        }
+
         node *c = head;
         node *p = c;
         for (i32 i = 0; i < index; ++i)
@@ -131,14 +142,11 @@ struct linked_list
             c = c->next;
         }
 
-        f32 val = c->value;
+        T val = c->value;
         node *n = c;
         p->next = c->next;
         delete n;
         size--;
-
-        // std::cout << "removed " << val << "\n";
-        // display();
     }
 
     void

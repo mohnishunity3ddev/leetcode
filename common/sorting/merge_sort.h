@@ -2,14 +2,6 @@
 
 #include <defines.h>
 
-// NOTE: Merges two separately sorted lists into the same array such that the
-// merged array is again sorted. low is start of array, high is the end of the
-// array, mid is the mid point of array where the first list ends, mid+1 is
-// where the second list starts.
-//
-// NOTE: mid is where the first sorted subarray ends(inclusive).
-// low is where the first sorted sublist starts.
-// high is one past where the second sorted sublist ends.
 void
 merge(int *arr, int low, int mid, int high)
 {
@@ -49,7 +41,7 @@ merge(int *arr, int low, int mid, int high)
 // Select a pair merge them to get 4 element arrays, then merge them to get 8
 // element arrays and so on, At the end, we will get a sorted array.
 void
-mergeSort(int *arr, int size)
+mergeSortIterative(int *arr, int size)
 {
     int currentSize;
     // NOTE: the i here, tells us how many number element arrays we have to
@@ -84,12 +76,6 @@ mergeSort(int *arr, int size)
             merge(arr, low, mid, high);
         }
     }
-}
-
-void
-mergeSortRecursive(int *arr, int size)
-{
-
 }
 
 
