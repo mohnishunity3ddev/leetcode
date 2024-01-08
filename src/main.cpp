@@ -2,7 +2,7 @@
 #include <vector>
 
 #include <defines.h>
-#include <leetcode/bit_manipulation/0190_reverse_bits.h>
+#include <leetcode/bit_manipulation/0191_number_of_1_bits.h>
 #include <string>
 
 using namespace std;
@@ -13,6 +13,6 @@ main()
 {
     solution sol;
 
-    uint32_t result = sol.reverseBits(0b00111001011110000010100101000000);
+    uint32_t result = sol.hammingWeight(0b00000000000000000000000000001011);
     cout << result << endl;
 }
