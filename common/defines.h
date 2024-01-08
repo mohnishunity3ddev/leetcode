@@ -50,7 +50,7 @@ struct myRand
     }
 };
 
-myRand Rand(1, 10'000'000);
+myRand Rand(1, 10000000);
 
 #define MIN(a, b) ((a) < (b)) ? (a) : (b)
 #define ZERO_ARRAY(arr, size)                                                  \
