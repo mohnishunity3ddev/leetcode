@@ -227,6 +227,30 @@ struct binary_tree
         std::cout << "\n";
     }
 
+    static void
+    test()
+    {
+        int arr[] = {5, 8, 6, NULL, 9, 3, 4, NULL, NULL, 4, 2};
+
+        // complete binary-tree
+        // int arr[] = {8, 3, 5, 4, 9, 7, 2};
+        // complete binary-tree
+        // int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, NULL, NULL, 601, 701};
+        // int arr[] = {8};
+
+        // left-skewed tree
+        // int arr[] = {8, 3, NULL, 5, NULL, NULL, NULL, 7};
+
+        // right-skewed tree
+        // int arr[] = {8, NULL, 3, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1};
+
+        binary_tree<int> binaryTree(arr, ARRAY_SIZE(arr));
+
+        binaryTree.preorder();
+        binaryTree.inorder();
+        binaryTree.postorder();
+    }
+
   private:
     std::unique_ptr<binary_tree_node<T>> root;
 
