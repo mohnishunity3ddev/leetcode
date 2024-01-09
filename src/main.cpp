@@ -2,7 +2,7 @@
 #include <vector>
 
 #include <defines.h>
-#include <leetcode/bit_manipulation/0137_single_number_2.h>
+#include <containers/tree/binary_tree/binary_tree.h>
 
 using namespace std;
 
@@ -10,8 +10,8 @@ using namespace std;
 int
 main()
 {
-    vector<int> nums = {0, 1, 0, 1, 0, 1, 99};
-    solution sol;
-    int res = sol.singleNumber(nums);
-    std::cout << res << endl;
+    int arr[] = {5, 8, 6, NULL, 9, 3, 6, NULL, NULL, 4, 2};
+    binary_tree<int> binaryTree(arr, ARRAY_SIZE(arr));
+
+    int x = 0;
 }
