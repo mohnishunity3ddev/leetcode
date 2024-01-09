@@ -185,6 +185,28 @@ struct binary_tree_traversal
 
         } while (!s.isEmpty());
     }
+
+    static void
+    levelOrderTraversal(binary_tree_node<T> *root)
+    {
+        queue<binary_tree_node<T> *> q{32};
+
+        q.enqueue(root);
+
+        while(!q.isEmpty())
+        {
+            auto *curr = q.dequeue();
+
+            std::cout << curr->val << ", ";
+
+            if(curr->left.get()) {
+                q.enqueue(curr->left.get());
+            }
+            if(curr->right.get()) {
+                q.enqueue(curr->right.get());
+            }
+        }
+    }
 };
 
 template <typename T>
@@ -227,15 +249,21 @@ struct binary_tree
         std::cout << "\n";
     }
 
+    void levelOrder() {
+        std::cout << "Level-order traversal: \n";
+        binary_tree_traversal<T>::levelOrderTraversal(root.get());
+        std::cout << "\n";
+    }
+
     static void
     test()
     {
-        int arr[] = {5, 8, 6, NULL, 9, 3, 4, NULL, NULL, 4, 2};
+        // int arr[] = {5, 8, 6, NULL, 9, 3, 4, NULL, NULL, 4, 2};
 
         // complete binary-tree
         // int arr[] = {8, 3, 5, 4, 9, 7, 2};
         // complete binary-tree
-        // int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, NULL, NULL, 601, 701};
+        int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, NULL, NULL, 601, 701};
         // int arr[] = {8};
 
         // left-skewed tree
@@ -249,6 +277,7 @@ struct binary_tree
         binaryTree.preorder();
         binaryTree.inorder();
         binaryTree.postorder();
+        binaryTree.levelOrder();
     }
 
   private:
