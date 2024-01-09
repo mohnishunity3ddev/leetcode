@@ -40,6 +40,17 @@ struct stack
         size += 1;
     }
 
+    T
+    peek()
+    {
+        if(isEmpty()) {
+            return NULL;
+        }
+
+        T result = items[top];
+        return result;
+    }
+
     bool
     isEmpty()
     {
@@ -48,12 +59,14 @@ struct stack
     }
 
     T
-    pop()
+    pop(bool displayMsg = true)
     {
         if(isEmpty())
         {
-            printf("The Stack is empty!\n");
-            return -1;
+            if(displayMsg) {
+                printf("The Stack is empty!\n");
+            }
+            return NULL;
         }
         T result = items[top--];
         size--;
