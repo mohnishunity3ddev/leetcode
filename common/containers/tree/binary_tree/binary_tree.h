@@ -3,7 +3,6 @@
 #include <defines.h>
 #include <containers/queue/queue.h>
 #include <containers/stack/stack.h>
-#include "../tree.h"
 
 template <typename T>
 struct binary_tree_node
@@ -12,7 +11,7 @@ struct binary_tree_node
     int arrIndex;
     std::unique_ptr<binary_tree_node<T>> left;
     std::unique_ptr<binary_tree_node<T>> right;
-
+    
     binary_tree_node() : val(0), arrIndex(0), left(nullptr), right(nullptr) {}
     binary_tree_node(T x) : val(x), left(nullptr), right(nullptr) {}
     binary_tree_node(T x, int arrIndex)
@@ -37,6 +36,7 @@ struct binary_tree_node
                   << " and at index " << arrIndex << ".\n";
     }
 };
+typedef binary_tree_node<int> itreenode;
 
 template <typename T>
 struct binary_tree_traversal
@@ -196,7 +196,6 @@ struct binary_tree_traversal
         while(!q.isEmpty())
         {
             auto *curr = q.dequeue();
-
             std::cout << curr->val << ", ";
 
             if(curr->left.get()) {
