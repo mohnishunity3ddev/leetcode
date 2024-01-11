@@ -8,10 +8,10 @@ template <typename T>
 struct binary_tree_node
 {
     T val;
-    int arrIndex;
+    int arrIndex = -1;
     std::unique_ptr<binary_tree_node<T>> left;
     std::unique_ptr<binary_tree_node<T>> right;
-    
+
     binary_tree_node() : val(0), arrIndex(0), left(nullptr), right(nullptr) {}
     binary_tree_node(T x) : val(x), left(nullptr), right(nullptr) {}
     binary_tree_node(T x, int arrIndex)
@@ -19,12 +19,12 @@ struct binary_tree_node
     {
     }
     binary_tree_node(T x, std::unique_ptr<binary_tree_node> left,
-              std::unique_ptr<binary_tree_node> right)
+                     std::unique_ptr<binary_tree_node> right)
         : val(x), left(std::move(left)), right(std::move(right))
     {
     }
     binary_tree_node(T x, int arrIndex, std::unique_ptr<binary_tree_node> left,
-              std::unique_ptr<binary_tree_node> right)
+                     std::unique_ptr<binary_tree_node> right)
         : val(x), arrIndex(arrIndex), left(std::move(left)),
           right(std::move(right))
     {
@@ -82,7 +82,7 @@ struct binary_tree_traversal
             std::cout << "Traversal: root cannot be null!\n";
             return;
         }
-
+        
         stack<binary_tree_node<T> *> s{32};
         binary_tree_node<T> *curr = root;
 
@@ -213,6 +213,7 @@ struct binary_tree
 {
     binary_tree() : root(nullptr) {}
     binary_tree(T *arr, T size) { construct(arr, size); }
+    binary_tree(std::unique_ptr<binary_tree_node<T>> root) : root(std::move(root)) {}
 
     ~binary_tree() { std::cout << "Binary tree destructor called!\n"; }
 
