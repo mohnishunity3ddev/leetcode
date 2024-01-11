@@ -6,8 +6,8 @@
 #include <iostream>
 #include <math.h>
 
-// Find the level with maximum sum. Fill in elements in the tree level by level
-// in the levelLElements vector passed in.
+// Find the level with maximum sum. Fill in elements in the tree level by
+// level in the levelLElements vector passed in.
 int
 findMaxSumLevel(itreenode *root, std::vector<std::vector<int>> &levelElements)
 {

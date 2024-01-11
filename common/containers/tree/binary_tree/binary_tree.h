@@ -82,7 +82,7 @@ struct binary_tree_traversal
             std::cout << "Traversal: root cannot be null!\n";
             return;
         }
-        
+
         stack<binary_tree_node<T> *> s{32};
         binary_tree_node<T> *curr = root;
 

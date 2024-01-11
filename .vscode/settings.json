@@ -1,8 +1,8 @@
 {
-    "editor.fontFamily": "'maple mono nf', 'comic mono', 'comic code demo regular', 'Google Sans Mono','Oxygen Mono Regular','JetBrainsMono Nerd Font Mono','CaskaydiaCove NF Mono','IosevkaTerm Nerd Font Mono', 'Source Code Pro','agave Nerd Font Mono r'",
+    "editor.fontFamily": "'comic code ligatures regular', 'maple mono nf', 'comic mono', 'comic code demo regular', 'Google Sans Mono','Oxygen Mono Regular','JetBrainsMono Nerd Font Mono','CaskaydiaCove NF Mono','IosevkaTerm Nerd Font Mono', 'Source Code Pro','agave Nerd Font Mono r'",
     "editor.fontSize": 15,
     "editor.fontLigatures": true,
-    "editor.fontWeight": "normal",
+    "editor.fontWeight": "bold",
     "editor.fontVariations": true,
     "editor.minimap.enabled": false,
     // "editor.letterSpacing": 1,
