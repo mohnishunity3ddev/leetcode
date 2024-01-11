@@ -3,7 +3,7 @@
 
 #include <defines.h>
 #include <containers/tree/binary_tree/binary_tree.h>
-#include <karumanchi/tree/q013.h>
+#include <karumanchi/tree/q020.h>
 
 using namespace std;
 
@@ -27,9 +27,8 @@ main()
 #else
     // another example tree to test.
 
-    auto thirteen = std::make_unique<itreenode>(13);
     auto twelve = std::make_unique<itreenode>(12);
-    auto eleven = std::make_unique<itreenode>(11, nullptr, std::move(thirteen));
+    auto eleven = std::make_unique<itreenode>(11);
     auto ten = std::make_unique<itreenode>(10, nullptr, std::move(eleven));
     auto nine = std::make_unique<itreenode>(9, nullptr, std::move(ten));
     auto eight = std::make_unique<itreenode>(8, std::move(nine), std::move(twelve));
@@ -43,8 +42,7 @@ main()
     binary_tree<int> binaryTree(std::move(one));
 
  #endif
-#if 1
-    bool deleteResult = deleteElement(binaryTree.getRoot(), 12);
-    int x = 0;
-#endif
+
+    int path[256];
+    printRootToLeafPaths(binaryTree.getRoot(), path, 0);
 }
