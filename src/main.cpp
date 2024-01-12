@@ -3,7 +3,6 @@
 
 #include <defines.h>
 #include <containers/tree/binary_tree/binary_tree.h>
-#include <karumanchi/tree/q033.h>
 
 using namespace std;
 
@@ -122,8 +121,4 @@ main()
     auto one = new itreenode(1, two, three);
     binary_tree<int> binaryTree(one);
  #endif
-
-
-    auto *root = buildBinaryTreeFromPreorder("ILILL", 0);
-    int x = 0;
 }
