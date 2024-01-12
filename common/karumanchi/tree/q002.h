@@ -12,7 +12,7 @@ maxElementIterative(binary_tree_node<int> *root)
 {
     int max = 1 << 31;
 
-    queue<binary_tree_node<int> *> q{32};
+    queue<binary_tree_node<int> *> q{32, nullptr};
 
     q.enqueue(root);
 
@@ -25,8 +25,8 @@ maxElementIterative(binary_tree_node<int> *root)
                 max = curr->val;
             }
 
-            auto *left = curr->left.get();
-            auto *right = curr->right.get();
+            auto *left = curr->left;
+            auto *right = curr->right;
             if(left) { q.enqueue(left); }
             if(right) { q.enqueue(right); }
         }

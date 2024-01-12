@@ -18,14 +18,14 @@ getSizeIterative(binary_tree_node<int> *root)
     while(!done) {
         while(curr != nullptr) {
             s.push(curr);
-            curr = curr->left.get();
+            curr = curr->left;
         }
 
         if(!s.isEmpty())
         {
             curr = s.pop();
             size++;
-            curr = curr->right.get();
+            curr = curr->right;
         }
         else
         {

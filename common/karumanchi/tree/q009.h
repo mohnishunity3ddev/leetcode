@@ -19,19 +19,19 @@ clearTree(binary_tree_node<int> *root)
     do
     {
         while(curr != nullptr) {
-            if(curr->right.get()) {
-                s.push(curr->right.get());
+            if(curr->right) {
+                s.push(curr->right);
             }
             s.push(curr);
-            curr = curr->left.get();
+            curr = curr->left;
         }
 
         curr = s.pop();
 
-        if(curr->right.get() != nullptr && curr->right.get() == s.peek()) {
+        if(curr->right != nullptr && curr->right == s.peek()) {
             s.pop();
             s.push(curr);
-            curr = curr->right.get();
+            curr = curr->right;
         } else {
             std::cout << curr->val
                       << " should be destroyed at index: " << curr->arrIndex
@@ -50,8 +50,8 @@ clearTreeRecursive(binary_tree_node<int> *root)
         return;
     }
 
-    clearTreeRecursive(root->left.get());
-    clearTreeRecursive(root->right.get());
+    clearTreeRecursive(root->left);
+    clearTreeRecursive(root->right);
     std::cout << root->val
               << " should be destroyed recursively at index: " << root->arrIndex
               << std::endl;

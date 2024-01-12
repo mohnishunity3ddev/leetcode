@@ -13,8 +13,8 @@ getSize(binary_tree_node<int> *root)
         return 0;
     }
     else {
-        int left = getSize(root->left.get());
-        int right = getSize(root->right.get());
+        int left = getSize(root->left);
+        int right = getSize(root->right);
         int result = left + right + 1;
         return result;
     }

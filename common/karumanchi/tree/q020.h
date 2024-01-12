@@ -22,9 +22,9 @@ printRootToLeafPaths(itreenode *root, int path[], int pathLen) {
         return;
     }
     path[pathLen++] = root->val;
-    
-    auto *left = root->left.get();
-    auto *right = root->right.get();
+
+    auto *left = root->left;
+    auto *right = root->right;
     if(left == nullptr && right == nullptr) {
         printArray(path, pathLen);
     } else{

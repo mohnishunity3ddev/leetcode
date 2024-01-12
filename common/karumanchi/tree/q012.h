@@ -16,7 +16,7 @@ deepestNode(binary_tree_node<int> *root)
         return nullptr;
     }
 
-    queue<binary_tree_node<int> *> q{32};
+    queue<binary_tree_node<int> *> q{32, nullptr};
     q.enqueue(root);
 
     binary_tree_node<int> *result = nullptr;
@@ -25,11 +25,11 @@ deepestNode(binary_tree_node<int> *root)
     {
         result = q.dequeue();
 
-        if(result->left.get()) {
-            q.enqueue(result->left.get());
+        if(result->left) {
+            q.enqueue(result->left);
         }
-        if(result->right.get()) {
-            q.enqueue(result->right.get());
+        if(result->right) {
+            q.enqueue(result->right);
         }
     }
 
@@ -45,8 +45,8 @@ height(binary_tree_node<int> *root)
         return 0;
     }
 
-    int left = height(root->left.get());
-    int right = height(root->right.get());
+    int left = height(root->left);
+    int right = height(root->right);
 
     if(left > right) {
         return left + 1;
@@ -64,8 +64,8 @@ deepestNode(binary_tree_node<int> *root, int height) {
         return nullptr;
     }
 
-    auto *left = deepestNode(root->left.get(), height - 1);
-    auto *right = deepestNode(root->right.get(), height - 1);
+    auto *left = deepestNode(root->left, height - 1);
+    auto *right = deepestNode(root->right, height - 1);
 
     if(left != nullptr) {
         return left;

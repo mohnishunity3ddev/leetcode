@@ -18,7 +18,7 @@ findMaxSumLevel(itreenode *root, std::vector<std::vector<int>> &levelElements)
 
     int level = 1;
     int currentSum = 0, maxSum = 0, maxLevel = level;
-    queue<itreenode *> q{32};
+    queue<itreenode *> q{32, nullptr};
 
     q.enqueue(root);
 
@@ -34,8 +34,8 @@ findMaxSumLevel(itreenode *root, std::vector<std::vector<int>> &levelElements)
         if(curr != nullptr) {
             currentSum += curr->val;
 
-            auto *left = curr->left.get();
-            auto *right = curr->right.get();
+            auto *left = curr->left;
+            auto *right = curr->right;
             if(left) {
                 q.enqueue(left);
             }

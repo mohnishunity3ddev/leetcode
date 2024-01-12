@@ -12,8 +12,8 @@ sumOfBinaryTreeRecur(itreenode *root) {
         return 0;
     }
 
-    return root->val + sumOfBinaryTreeRecur(root->left.get()) +
-           sumOfBinaryTreeRecur(root->right.get());
+    return root->val + sumOfBinaryTreeRecur(root->left) +
+           sumOfBinaryTreeRecur(root->right);
 }
 
 

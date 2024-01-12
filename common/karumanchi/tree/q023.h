@@ -13,7 +13,7 @@ sumOfBinaryTreeIterative(itreenode *root) {
     }
 
     int sum = 0;
-    queue<itreenode *> q{32};
+    queue<itreenode *> q{32, nullptr};
 
     q.enqueue(root);
 
@@ -22,8 +22,8 @@ sumOfBinaryTreeIterative(itreenode *root) {
 
         sum += curr->val;
 
-        auto *left = curr->left.get();
-        auto *right = curr->right.get();
+        auto *left = curr->left;
+        auto *right = curr->right;
         if(left) {
             q.enqueue(left);
         }

@@ -6,18 +6,17 @@
 #include <iostream>
 #include <math.h>
 
-std::unique_ptr<itreenode>
+itreenode *
 getBinaryTreeMirror(itreenode *root) {
     if(root == nullptr) {
         return nullptr;
     }
 
-    auto newNode =
-        std::make_unique<itreenode>(root->val,
-                                    std::move(getBinaryTreeMirror(root->right.get())),
-                                    std::move(getBinaryTreeMirror(root->left.get())));
+    itreenode *newNode =
+        new itreenode(root->val, getBinaryTreeMirror(root->right),
+                      getBinaryTreeMirror(root->left));
 
-        return newNode;
+    return newNode;
 }
 
 #define q024_h

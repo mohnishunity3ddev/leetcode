@@ -9,7 +9,7 @@
 void
 reverseLevelOrder(binary_tree_node<int> *root)
 {
-    queue<binary_tree_node<int> *> q{32};
+    queue<binary_tree_node<int> *> q{32, nullptr};
     stack<int> s{32};
 
     q.enqueue(root);
@@ -19,8 +19,8 @@ reverseLevelOrder(binary_tree_node<int> *root)
 
         s.push(curr->val);
 
-        auto *left = curr->left.get();
-        auto *right = curr->right.get();
+        auto *left = curr->left;
+        auto *right = curr->right;
         if(left != nullptr) {
             q.enqueue(left);
         }

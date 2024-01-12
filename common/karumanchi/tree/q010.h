@@ -13,8 +13,8 @@ heightOfBinaryTree(binary_tree_node<int> *root)
         return 0;
     }
 
-    int leftHeight = heightOfBinaryTree(root->left.get());
-    int rightHeight = heightOfBinaryTree(root->right.get());
+    int leftHeight = heightOfBinaryTree(root->left);
+    int rightHeight = heightOfBinaryTree(root->right);
 
     if(leftHeight > rightHeight) {
         return leftHeight + 1;

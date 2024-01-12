@@ -17,11 +17,11 @@ printPath(binary_tree_node<int> *root, int item)
 
     do {
         while(curr != nullptr) {
-            if(curr->right.get()) {
-                s.push(curr->right.get());
+            if(curr->right) {
+                s.push(curr->right);
             }
             s.push(curr);
-            curr = curr->left.get();
+            curr = curr->left;
         }
 
         curr = s.pop();
@@ -30,10 +30,10 @@ printPath(binary_tree_node<int> *root, int item)
             break;
         }
 
-        if(curr->right.get() && s.peek() == curr->right.get()) {
+        if(curr->right && s.peek() == curr->right) {
             s.pop();
             s.push(curr);
-            curr = curr->right.get();
+            curr = curr->right;
         }
         else {
             curr = nullptr;
@@ -45,12 +45,12 @@ printPath(binary_tree_node<int> *root, int item)
         while(!s.isEmpty()) {
             // std::cout << curr->val << " <-- ";
             path.push_back(curr->val);
-            if(curr->right.get() && curr->right.get() == s.peek()) {
+            if(curr->right && curr->right == s.peek()) {
                 s.pop();
             }
             prev = curr;
             curr = s.pop();
-            if(curr->right.get() == prev) {
+            if(curr->right == prev) {
                 path.push_back(1);
             } else {
                 path.push_back(-1);
@@ -89,7 +89,7 @@ Q13(itreenode *root, itreenode **parent, int itemToFind, itreenode **foundItem)
         return nullptr;
     }
 
-    queue<binary_tree_node<int> *> q{32};
+    queue<binary_tree_node<int> *> q{32, nullptr};
     stack<itreenode *> s{32};
     s.push(root);
 
@@ -104,8 +104,8 @@ Q13(itreenode *root, itreenode **parent, int itemToFind, itreenode **foundItem)
             *foundItem = deepestNode;
         }
 
-        auto *left = deepestNode->left.get();
-        auto *right = deepestNode->right.get();
+        auto *left = deepestNode->left;
+        auto *right = deepestNode->right;
         if(left)
         {
             q.enqueue(left);

@@ -18,8 +18,8 @@ searchElementInBinaryTree(binary_tree_node<int> *root, int valueToFind)
         return true;
     }
 
-    if (searchElementInBinaryTree(root->left.get(), valueToFind) ||
-        searchElementInBinaryTree(root->right.get(), valueToFind))
+    if (searchElementInBinaryTree(root->left, valueToFind) ||
+        searchElementInBinaryTree(root->right, valueToFind))
     {
         return true;
     } else {

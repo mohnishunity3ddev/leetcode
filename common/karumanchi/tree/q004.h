@@ -23,13 +23,13 @@ searchElementInBinaryTree(binary_tree_node<int> *root, int valueToFind)
             } else {
                 std::cout << curr->val << ", ";
                 s.push(curr);
-                curr = curr->left.get();
+                curr = curr->left;
             }
         }
 
         if(!s.isEmpty()) {
             curr = s.pop();
-            curr = curr->right.get();
+            curr = curr->right;
         } else {
             done = true;
         }

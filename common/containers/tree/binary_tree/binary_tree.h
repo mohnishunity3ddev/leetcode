@@ -9,8 +9,8 @@ struct binary_tree_node
 {
     T val;
     int arrIndex = -1;
-    std::unique_ptr<binary_tree_node<T>> left;
-    std::unique_ptr<binary_tree_node<T>> right;
+    binary_tree_node<T> *left;
+    binary_tree_node<T> *right;
 
     binary_tree_node() : val(0), arrIndex(0), left(nullptr), right(nullptr) {}
     binary_tree_node(T x) : val(x), left(nullptr), right(nullptr) {}
@@ -18,15 +18,13 @@ struct binary_tree_node
         : val(x), arrIndex(arrIndex), left(nullptr), right(nullptr)
     {
     }
-    binary_tree_node(T x, std::unique_ptr<binary_tree_node> left,
-                     std::unique_ptr<binary_tree_node> right)
-        : val(x), left(std::move(left)), right(std::move(right))
+    binary_tree_node(T x, binary_tree_node *left, binary_tree_node *right)
+        : val(x), left(left), right(right)
     {
     }
-    binary_tree_node(T x, int arrIndex, std::unique_ptr<binary_tree_node> left,
-                     std::unique_ptr<binary_tree_node> right)
-        : val(x), arrIndex(arrIndex), left(std::move(left)),
-          right(std::move(right))
+    binary_tree_node(T x, int arrIndex, binary_tree_node *left,
+                     binary_tree_node *right)
+        : val(x), arrIndex(arrIndex), left(left), right(right)
     {
     }
 
@@ -47,8 +45,8 @@ struct binary_tree_traversal
         if (root != nullptr)
         {
             std::cout << root->val << ", ";
-            preorderRecursive(root->left.get());
-            preorderRecursive(root->right.get());
+            preorderRecursive(root->left);
+            preorderRecursive(root->right);
         }
     }
 
@@ -57,9 +55,9 @@ struct binary_tree_traversal
     {
         if (root != nullptr)
         {
-            inorderRecursive(root->left.get());
+            inorderRecursive(root->left);
             std::cout << root->val << ", ";
-            inorderRecursive(root->right.get());
+            inorderRecursive(root->right);
         }
     }
 
@@ -68,8 +66,8 @@ struct binary_tree_traversal
     {
         if (root != nullptr)
         {
-            postorderRecursive(root->left.get());
-            postorderRecursive(root->right.get());
+            postorderRecursive(root->left);
+            postorderRecursive(root->right);
             std::cout << root->val << ", ";
         }
     }
@@ -94,12 +92,12 @@ struct binary_tree_traversal
             {
                 std::cout << curr->val << ", ";
                 s.push(curr);
-                curr = curr->left.get();
+                curr = curr->left;
             }
             if(!s.isEmpty())
             {
                 curr = s.pop();
-                curr = curr->right.get();
+                curr = curr->right;
             }
             else
             {
@@ -127,7 +125,7 @@ struct binary_tree_traversal
             if (curr != nullptr)
             {
                 s.push(curr);
-                curr = curr->left.get();
+                curr = curr->left;
             }
             else
             {
@@ -136,7 +134,7 @@ struct binary_tree_traversal
                     curr = s.pop();
                     std::cout << curr->val << ", ";
 
-                    curr = curr->right.get();
+                    curr = curr->right;
                 }
                 else
                 {
@@ -161,18 +159,18 @@ struct binary_tree_traversal
         do
         {
             while(curr != nullptr) {
-                auto *right = curr->right.get();
+                auto *right = curr->right;
                 if(right) {
                     s.push(right);
                 }
                 s.push(curr);
 
-                curr = curr->left.get();
+                curr = curr->left;
             }
 
             curr = s.pop();
 
-            auto *right = curr->right.get();
+            auto *right = curr->right;
             if((right != nullptr) && (s.peek() == right)) {
                 s.pop();
                 s.push(curr);
@@ -189,7 +187,7 @@ struct binary_tree_traversal
     static void
     levelOrderTraversal(binary_tree_node<T> *root)
     {
-        queue<binary_tree_node<T> *> q{32};
+        queue<binary_tree_node<T> *> q{32, nullptr};
 
         q.enqueue(root);
 
@@ -198,11 +196,11 @@ struct binary_tree_traversal
             auto *curr = q.dequeue();
             std::cout << curr->val << ", ";
 
-            if(curr->left.get()) {
-                q.enqueue(curr->left.get());
+            if(curr->left) {
+                q.enqueue(curr->left);
             }
-            if(curr->right.get()) {
-                q.enqueue(curr->right.get());
+            if(curr->right) {
+                q.enqueue(curr->right);
             }
         }
     }
@@ -213,45 +211,48 @@ struct binary_tree
 {
     binary_tree() : root(nullptr) {}
     binary_tree(T *arr, T size) { construct(arr, size); }
-    binary_tree(std::unique_ptr<binary_tree_node<T>> root) : root(std::move(root)) {}
+    binary_tree(binary_tree_node<T> *root) : root(root) {}
 
-    ~binary_tree() { std::cout << "Binary tree destructor called!\n"; }
+    ~binary_tree() {
+        std::cout << "Binary tree destructor called!\n";
+        clear();
+    }
 
     binary_tree_node<T> *getRoot()
     {
-        return root.get();
+        return root;
     }
 
     void preorder() {
         std::cout << "Pre-order traversal recursive: \n";
-        binary_tree_traversal<T>::preorderRecursive(root.get());
+        binary_tree_traversal<T>::preorderRecursive(root);
         std::cout << "\n";
         std::cout << "Pre-order traversal iterative: \n";
-        binary_tree_traversal<T>::preorderIterative(root.get());
+        binary_tree_traversal<T>::preorderIterative(root);
         std::cout << "\n";
     }
 
     void inorder() {
         std::cout << "In-order traversal recursive: \n";
-        binary_tree_traversal<T>::inorderRecursive(root.get());
+        binary_tree_traversal<T>::inorderRecursive(root);
         std::cout << "\n";
         std::cout << "In-order traversal iterative: \n";
-        binary_tree_traversal<T>::inorderIterative(root.get());
+        binary_tree_traversal<T>::inorderIterative(root);
         std::cout << "\n";
     }
 
     void postorder() {
         std::cout << "Post-order traversal recursive: \n";
-        binary_tree_traversal<T>::postorderRecursive(root.get());
+        binary_tree_traversal<T>::postorderRecursive(root);
         std::cout << "\n";
         std::cout << "Post-order traversal iterative: \n";
-        binary_tree_traversal<T>::postorderIterative(root.get());
+        binary_tree_traversal<T>::postorderIterative(root);
         std::cout << "\n";
     }
 
     void levelOrder() {
         std::cout << "Level-order traversal: \n";
-        binary_tree_traversal<T>::levelOrderTraversal(root.get());
+        binary_tree_traversal<T>::levelOrderTraversal(root);
         std::cout << "\n";
     }
 
@@ -281,34 +282,67 @@ struct binary_tree
     }
 
   private:
-    std::unique_ptr<binary_tree_node<T>> root;
+    binary_tree_node<T> *root;
 
     void
     construct(T *arr, T size)
     {
-        queue<binary_tree_node<T> *> q = queue<binary_tree_node<T> *>(size);
+        queue<binary_tree_node<T> *> q = queue<binary_tree_node<T> *>(size, nullptr);
 
-        root = std::make_unique<binary_tree_node<T>>(arr[0], 0);
-        q.enqueue(root.get());
+        root = new binary_tree_node<T>(arr[0], 0);
+        q.enqueue(root);
 
         while(!q.isEmpty()) {
             binary_tree_node<T> *parent = q.dequeue();
             int parentIndex = parent->arrIndex;
             int lci = (parentIndex * 2) + 1;
             if(lci < size && arr[lci] != NULL) {
-                auto node = std::make_unique<binary_tree_node<T>>(arr[lci], lci);
-                q.enqueue(node.get());
-                parent->left = std::move(node);
+                auto node = new binary_tree_node<T>(arr[lci], lci);
+                q.enqueue(node);
+                parent->left = node;
             }
             int rci = (parentIndex * 2) + 2;
             if(rci < size && arr[rci] != NULL) {
-                auto node = std::make_unique<binary_tree_node<T>>(arr[rci], rci);
-                q.enqueue(node.get());
-                parent->right = std::move(node);
+                auto node = new binary_tree_node<T>(arr[rci], rci);
+                q.enqueue(node);
+                parent->right = node;
             }
         }
 
         ASSERT(q.isEmpty());
+    }
+
+    void
+    clear()
+    {
+        if(this->root == nullptr) {
+            return;
+        }
+
+        // post order
+        stack<binary_tree_node<T> *> s{32};
+        auto *curr = this->root;
+
+        do {
+            while(curr != nullptr) {
+                if(curr->right) {
+                    s.push(curr->right);
+                }
+                s.push(curr);
+                curr = curr->left;
+            }
+
+            curr = s.pop();
+
+            if(curr->right && curr->right == s.peek()) {
+                s.pop();
+                s.push(curr);
+                curr = curr->right;
+            } else {
+                delete curr;
+                curr = nullptr;
+            }
+        } while (!s.isEmpty());
     }
 };
 

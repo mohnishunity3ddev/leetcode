@@ -11,9 +11,8 @@ int
 heightOfBinaryTree(binary_tree_node<int> *root)
 {
     int height = 0;
-    queue<binary_tree_node<int> *> q(32);
-    queue<binary_tree_node<int> *> auxQ(32);
-    
+    queue<binary_tree_node<int> *> q(32, nullptr);
+    queue<binary_tree_node<int> *> auxQ(32, nullptr);
 
     q.enqueue(root);
     std::cout << root->val << ", " << std::endl;
@@ -36,8 +35,8 @@ heightOfBinaryTree(binary_tree_node<int> *root)
             height++;
         }
 
-        auto *left = curr->left.get();
-        auto *right = curr->right.get();
+        auto *left = curr->left;
+        auto *right = curr->right;
         if (left) { auxQ.enqueue(left); }
         if (right) { auxQ.enqueue(right); }
     }
@@ -47,7 +46,7 @@ heightOfBinaryTree(binary_tree_node<int> *root)
 
 int karu_height(binary_tree_node<int> *root) {
     int level = 1;
-    queue<binary_tree_node<int> *> q{32};
+    queue<binary_tree_node<int> *> q{32, nullptr};
 
     if(root == nullptr) { return 0; }
 
@@ -63,8 +62,8 @@ int karu_height(binary_tree_node<int> *root) {
             }
             level++;
         } else {
-            if (root->left.get()) { q.enqueue(root->left.get()); }
-            if (root->right.get()) { q.enqueue(root->right.get()); }
+            if (root->left) { q.enqueue(root->left); }
+            if (root->right) { q.enqueue(root->right); }
         }
     }
 

@@ -13,15 +13,15 @@ countLeaves(itreenode *root, std::vector<int> &leafNodes)
         return result;
     }
 
-    queue<itreenode *> q{32};
+    queue<itreenode *> q{32, nullptr};
     q.enqueue(root);
 
     while(!q.isEmpty())
     {
         auto *curr = q.dequeue();
 
-        auto *left = curr->left.get();
-        auto *right = curr->right.get();
+        auto *left = curr->left;
+        auto *right = curr->right;
 
         if(left == nullptr && right == nullptr) {
             leafNodes.push_back(curr->val);

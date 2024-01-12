@@ -3,8 +3,7 @@
 
 #include <defines.h>
 #include <containers/tree/binary_tree/binary_tree.h>
-#include <karumanchi/tree/q024.h>
-#include <karumanchi/tree/q025.h>
+#include <karumanchi/tree/q033.h>
 
 using namespace std;
 
@@ -20,11 +19,11 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 
     do {
         while(curr != nullptr) {
-            if(curr->right.get()) {
-                s.push(curr->right.get());
+            if(curr->right) {
+                s.push(curr->right);
             }
             s.push(curr);
-            curr = curr->left.get();
+            curr = curr->left;
         }
 
         curr = s.pop();
@@ -33,10 +32,10 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
             break;
         }
 
-        if(curr->right.get() && s.peek() == curr->right.get()) {
+        if(curr->right && s.peek() == curr->right) {
             s.pop();
             s.push(curr);
-            curr = curr->right.get();
+            curr = curr->right;
         }
         else {
             curr = nullptr;
@@ -49,13 +48,13 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
         while(!done) {
             // std::cout << curr->val << " <-- ";
             path.push_back(curr->val);
-            if(curr->right.get() && curr->right.get() == s.peek()) {
+            if(curr->right && curr->right == s.peek()) {
                 s.pop();
             }
             prev = curr;
             if(!s.isEmpty()) {
                 curr = s.pop();
-                if(curr->right.get() == prev) {
+                if(curr->right == prev) {
                     path.push_back(1);
                 } else {
                     path.push_back(-1);
@@ -94,9 +93,9 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 int
 main()
 {
-#if 0
-    // int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, 3123, NULL, 601, 701, NULL,
-    //              NULL, 21, NULL, NULL, 39};
+#if 1
+    int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, 3123, NULL, 601, 701, NULL,
+                 NULL, 21, NULL, NULL, 39};
 
     // left-skewed tree
     // int arr[] = {8, 3, NULL, 5, NULL, NULL, NULL, 7};
@@ -105,50 +104,26 @@ main()
     // int arr[] = {8,    NULL, 3,    NULL, NULL, NULL, 2, NULL,
     //              NULL, NULL, NULL, NULL, NULL, NULL, 1};
 
-    int arr[] = {8, 3, 5, 4, 9, 11, 21};
+    // int arr[] = {8, 3, 5, 4, 9, 11, 21};
     ibt binaryTree(arr, ARRAY_SIZE(arr));
 #else
     // another example tree to test.
-
-    auto twelve = std::make_unique<itreenode>(12);
-    auto eleven = std::make_unique<itreenode>(11);
-    auto ten = std::make_unique<itreenode>(10, nullptr, std::move(eleven));
-    auto nine = std::make_unique<itreenode>(9, nullptr, std::move(ten));
-    auto eight = std::make_unique<itreenode>(8, std::move(nine), std::move(twelve));
-    auto four = std::make_unique<itreenode>(4, nullptr, std::move(eight));
-    auto twenty = std::make_unique<itreenode>(20);
-    auto three = std::make_unique<itreenode>(3, std::move(four), std::move(twenty));
-    auto six = std::make_unique<itreenode>(6);
-    auto seven = std::make_unique<itreenode>(7);
-    auto two = std::make_unique<itreenode>(2, std::move(six), std::move(seven));
-    auto one = std::make_unique<itreenode>(1, std::move(two), std::move(three));
-    binary_tree<int> binaryTree(std::move(one));
-
+    auto twelve = new itreenode(12);
+    auto eleven = new itreenode(11);
+    auto ten = new itreenode(10, nullptr, eleven);
+    auto nine = new itreenode(9, nullptr, ten);
+    auto eight = new itreenode(8, nine, twelve);
+    auto four = new itreenode(4, nullptr, eight);
+    auto twenty = new itreenode(20);
+    auto three = new itreenode(3, four, twenty);
+    auto six = new itreenode(6);
+    auto seven = new itreenode(7);
+    auto two = new itreenode(2, six, seven);
+    auto one = new itreenode(1, two, three);
+    binary_tree<int> binaryTree(one);
  #endif
 
-    auto mirrorRoot = getBinaryTreeMirror(binaryTree.getRoot());
-    mirrorRoot->val = 312;
-    ibt mirrorTree(std::move(mirrorRoot));
-    int arr[] = {8, 3, 5, 4, 9, 11, 21};
-    ibt binaryTree2(arr, ARRAY_SIZE(arr));
 
-#if 0
-    // 11 is a leaf node. We check if its a mirror by printing out the path from
-    // root to this 11 node.
-    printRootToItemPath(binaryTree.getRoot(), 11);
-    printRootToItemPath(mirrorTree.getRoot(), 11);
-    binary_tree_traversal<int>::postorderRecursive(binaryTree.getRoot());
-    std::cout << "\n";
-    binary_tree_traversal<int>::postorderRecursive(mirrorTree.getRoot());
-    std::cout << "\n";
-#endif
-
-    bool areMirrors =
-        areMirrorTrees(binaryTree.getRoot(), mirrorTree.getRoot());
-    if(areMirrors) {
-        std::cout << "Given trees are mirrors!\n";
-    } else {
-        std::cout << "Given trees are NOT mirrors!\n";
-    }
-
+    auto *root = buildBinaryTreeFromPreorder("ILILL", 0);
+    int x = 0;
 }

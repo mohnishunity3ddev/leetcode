@@ -17,8 +17,8 @@ areTreesStructurallyIdentical(itreenode *a, itreenode *b)
     }
 
     return ((a->val == b->val) &&
-            areTreesStructurallyIdentical(a->left.get(), b->left.get()) &&
-            areTreesStructurallyIdentical(a->right.get(), b->right.get()));
+            areTreesStructurallyIdentical(a->left, b->left) &&
+            areTreesStructurallyIdentical(a->right, b->right));
 }
 
 #define q017_h

@@ -25,11 +25,17 @@ struct queue
     int size = 0;
 
   public:
-    queue() : capacity(1), front(-1), rear(-1), size(0) {
+    T invalidValue;
+    queue(T invalidVal)
+        : capacity(1), front(-1), rear(-1), size(0), invalidValue(invalidVal)
+    {
         arr = new T[capacity];
     }
 
-    queue(int capacity) : capacity(capacity), front(-1), rear(-1), size(0) {
+    queue(int capacity, T invalidVal)
+        : capacity(capacity), front(-1), rear(-1), size(0),
+          invalidValue(invalidVal)
+    {
         arr = new T[capacity];
     }
 
@@ -72,14 +78,23 @@ struct queue
 
     T dequeue() {
         if(isEmpty()) {
-            return NULL;
+            return invalidValue;
         }
 
         T result = arr[front];
-        arr[front] = NULL;
+        arr[front] = invalidValue;
         front = ((front + 1) % capacity);
         --size;
 
+        return result;
+    }
+
+    T front() {
+        if(isEmpty()) {
+            return invalidValue;
+        }
+
+        T result = arr[front];
         return result;
     }
 

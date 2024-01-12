@@ -14,8 +14,8 @@ maxElementRecursive(binary_tree_node<int> *root)
     }
 
     int rootValue = root->val;
-    int leftVal = maxElementRecursive(root->left.get());
-    int rightVal = maxElementRecursive(root->right.get());
+    int leftVal = maxElementRecursive(root->left);
+    int rightVal = maxElementRecursive(root->right);
 
     int max = leftVal > rightVal ? leftVal : rightVal;
     max = rootValue > max ? rootValue : max;

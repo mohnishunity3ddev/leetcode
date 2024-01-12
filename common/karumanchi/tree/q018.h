@@ -15,8 +15,8 @@ diameter(itreenode *root, int *maxDiameterTillNow)
         return 0;
     }
 
-    int leftDiameter = diameter(root->left.get(), maxDiameterTillNow);
-    int rightDiameter = diameter(root->right.get(), maxDiameterTillNow);
+    int leftDiameter = diameter(root->left, maxDiameterTillNow);
+    int rightDiameter = diameter(root->right, maxDiameterTillNow);
 
     if((leftDiameter + rightDiameter) > *maxDiameterTillNow) {
         *maxDiameterTillNow = (leftDiameter + rightDiameter);

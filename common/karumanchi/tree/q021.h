@@ -16,8 +16,8 @@ hasPathSum(itreenode *root, int sum)
         return false;
     }
 
-    auto *left = root->left.get();
-    auto *right = root->right.get();
+    auto *left = root->left;
+    auto *right = root->right;
     sum -= root->val;
 
     if (!left && !right) // leaf node.
@@ -26,9 +26,9 @@ hasPathSum(itreenode *root, int sum)
     }
     else
     {
-        result = hasPathSum(root->left.get(), sum);
+        result = hasPathSum(root->left, sum);
         if(!result) {
-            result = hasPathSum(root->right.get(), sum);
+            result = hasPathSum(root->right, sum);
         }
     }
 

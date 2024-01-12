@@ -21,17 +21,17 @@ insertAsRightChild(binary_tree_node<int> *root, int item)
         while(curr != nullptr) {
             std::cout << curr->val << ", ";
             s.push(curr);
-            curr = curr->left.get();
+            curr = curr->left;
         }
 
         if(!s.isEmpty()) {
             curr = s.pop();
-            if(curr->right.get() == nullptr && !inserted) {
-                auto node = std::make_unique<binary_tree_node<int>>(item);
-                curr->right = std::move(node);
+            if(curr->right == nullptr && !inserted) {
+                auto node = new binary_tree_node<int>(item);
+                curr->right = node;
                 inserted = true;
             }
-            curr = curr->right.get();
+            curr = curr->right;
         } else {
             done = true;
         }

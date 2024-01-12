@@ -22,8 +22,8 @@ areMirrorTrees(itreenode *a, itreenode *b) {
         return false;
     }
 
-    return ((areMirrorTrees(a->left.get(), b->right.get()) &&
-             areMirrorTrees(a->right.get(), b->left.get())));
+    return ((areMirrorTrees(a->left, b->right) &&
+             areMirrorTrees(a->right, b->left)));
 }
 
 #define q025_h
