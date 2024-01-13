@@ -4,9 +4,7 @@
 #include <defines.h>
 #include <containers/tree/binary_tree/binary_tree.h>
 #include <containers/tree/binary_search_tree/binary_search_tree.h>
-
-#include <karumanchi/tree/binary_search_tree/01.insert_into_bst.h>
-#include <karumanchi/tree/binary_search_tree/02.delete_from_bst.h>
+#include <containers/linked_list/double_linked_list.h>
 
 using namespace std;
 
@@ -108,68 +106,16 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 int
 main()
 {
-#if 1
-    // int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, 3123, NULL, 601, 701, NULL,
-    //              NULL, 21, NULL, NULL, 39};
+    double_linked_list<int> dll{};
 
-    // left-skewed tree
-    // int arr[] = {8, 3, NULL, 5, NULL, NULL, NULL, 7};
-
-    // right-skewed tree
-    // int arr[] = {8,    NULL, 3,    NULL, NULL, NULL, 2, NULL,
-    //              NULL, NULL, NULL, NULL, NULL, NULL, 1};
-
-    // int arr[] = {8, 3, 5, 4, 9, 11, 21};
-    int arr[] = {4, 2, 40, 42, 5, 35, 6, 25, 24};
-#else
-    // another example tree to test.
-    auto twelve = new itreenode(12);
-    auto eleven = new itreenode(11);
-    auto ten = new itreenode(10, nullptr, eleven);
-    auto nine = new itreenode(9, nullptr, ten);
-    auto eight = new itreenode(8, nine, twelve);
-    auto four = new itreenode(4, nullptr, eight);
-    auto twenty = new itreenode(20);
-    auto three = new itreenode(3, four, twenty);
-    auto six = new itreenode(6);
-    auto seven = new itreenode(7);
-    auto two = new itreenode(2, six, seven);
-    auto one = new itreenode(1, two, three);
-    binary_tree<int> binaryTree(one);
- #endif
-
-#if 0
-    iBstNode *ten = new iBstNode(10);
-    iBstNode *thirteen = new iBstNode(13);
-    iBstNode *twelve = new iBstNode(12, ten, thirteen);
-
-    iBstNode *one = new iBstNode(1);
-    iBstNode *four = new iBstNode(4);
-    iBstNode *three = new iBstNode(3, nullptr, four);
-    iBstNode *two = new iBstNode(2, one, three);
-    iBstNode *six = new iBstNode(6);
-    iBstNode *eight = new iBstNode(8);
-    iBstNode *seven = new iBstNode(7, six, eight);
-    iBstNode *five = new iBstNode(5, two, seven);
-
-    iBstNode *eight2 = new iBstNode(8, five, twelve);
-
-    iBstNode *root = eight2;
-
-    auto *t = deleteFromBSTIterative(root, 5);
-#else
-    iBst bst(arr, ARRAY_SIZE(arr));
-    iBstNode *root = bst.getRoot();
-
-    std::cout << "The min value in the BST is: " << bst.getMin() << std::endl;
-    std::cout << "The max value in the BST is: " << bst.getMax() << std::endl;
-
-    iBstNode *minNode = bst.getMinNode();
-    iBstNode *maxNode = bst.getMaxNode();
-
-#endif
-
-    bst.remove(25);
+    for (int i = 0; i < 10; ++i) {
+        dll.add(i);
+    }
+    dll.addAt(4, 510);
+    dll.display();
+    dll.removeAt(4);
+    dll.display();
+    dll.displayReverse();
 
     int x = 0;
 }
