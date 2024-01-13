@@ -3,8 +3,24 @@
 
 #include <defines.h>
 #include <containers/tree/binary_tree/binary_tree.h>
+#include <containers/tree/binary_search_tree/binary_search_tree.h>
+
+#include <karumanchi/tree/binary_search_tree/01.insert_into_bst.h>
+#include <karumanchi/tree/binary_search_tree/02.delete_from_bst.h>
 
 using namespace std;
+
+struct test{
+
+  private:
+    int x;
+    int y;
+
+  public:
+    static const int i = 10;
+    test(int x, int y) : x(x) , y(y) {}
+    int z;
+};
 
 void
 printRootToItemPath(binary_tree_node<int> *root, int item)
@@ -93,8 +109,8 @@ int
 main()
 {
 #if 1
-    int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, 3123, NULL, 601, 701, NULL,
-                 NULL, 21, NULL, NULL, 39};
+    // int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, 3123, NULL, 601, 701, NULL,
+    //              NULL, 21, NULL, NULL, 39};
 
     // left-skewed tree
     // int arr[] = {8, 3, NULL, 5, NULL, NULL, NULL, 7};
@@ -104,7 +120,7 @@ main()
     //              NULL, NULL, NULL, NULL, NULL, NULL, 1};
 
     // int arr[] = {8, 3, 5, 4, 9, 11, 21};
-    ibt binaryTree(arr, ARRAY_SIZE(arr));
+    int arr[] = {4, 2, 40, 42, 5, 35, 6, 25, 24};
 #else
     // another example tree to test.
     auto twelve = new itreenode(12);
@@ -121,4 +137,39 @@ main()
     auto one = new itreenode(1, two, three);
     binary_tree<int> binaryTree(one);
  #endif
+
+#if 0
+    iBstNode *ten = new iBstNode(10);
+    iBstNode *thirteen = new iBstNode(13);
+    iBstNode *twelve = new iBstNode(12, ten, thirteen);
+
+    iBstNode *one = new iBstNode(1);
+    iBstNode *four = new iBstNode(4);
+    iBstNode *three = new iBstNode(3, nullptr, four);
+    iBstNode *two = new iBstNode(2, one, three);
+    iBstNode *six = new iBstNode(6);
+    iBstNode *eight = new iBstNode(8);
+    iBstNode *seven = new iBstNode(7, six, eight);
+    iBstNode *five = new iBstNode(5, two, seven);
+
+    iBstNode *eight2 = new iBstNode(8, five, twelve);
+
+    iBstNode *root = eight2;
+
+    auto *t = deleteFromBSTIterative(root, 5);
+#else
+    iBst bst(arr, ARRAY_SIZE(arr));
+    iBstNode *root = bst.getRoot();
+
+    std::cout << "The min value in the BST is: " << bst.getMin() << std::endl;
+    std::cout << "The max value in the BST is: " << bst.getMax() << std::endl;
+
+    iBstNode *minNode = bst.getMinNode();
+    iBstNode *maxNode = bst.getMaxNode();
+
+#endif
+
+    bst.remove(25);
+
+    int x = 0;
 }

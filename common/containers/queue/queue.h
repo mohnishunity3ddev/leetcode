@@ -89,7 +89,7 @@ struct queue
         return result;
     }
 
-    T front() {
+    T queueFront() {
         if(isEmpty()) {
             return invalidValue;
         }

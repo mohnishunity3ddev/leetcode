@@ -1,14 +1,14 @@
 {
-    "editor.fontFamily": "'comic code ligatures regular', 'maple mono nf', 'comic mono', 'comic code demo regular', 'Google Sans Mono','Oxygen Mono Regular','JetBrainsMono Nerd Font Mono','CaskaydiaCove NF Mono','IosevkaTerm Nerd Font Mono', 'Source Code Pro','agave Nerd Font Mono r'",
-    "editor.fontSize": 15,
+    "editor.fontFamily": "'comic code ligatures regular', 'maple mono nf', 'comic mono', 'comic code demo regular', 'Google Sans Mono','Oxygen Mono Regular','JetBrainsMono Nerd Font Mono','CaskaydiaCove NF Mono','IosevkaTerm Nerd Font Mono', 'agave Nerd Font Mono r'",
+    "editor.fontSize": 14,
     "editor.fontLigatures": true,
     "editor.fontWeight": "bold",
     "editor.fontVariations": true,
     "editor.minimap.enabled": false,
     // "editor.letterSpacing": 1,
-    // "terminal.integrated.fontFamily": "'agave Nerd Font Mono r','Source Code Pro', 'JetBrainsMono Nerd Font Mono','Google Sans Mono','IosevkaTerm Nerd Font Mono','Maple Mono NF','Oxygen Mono Regular','DaddyTimeMono Nerd Font Mono Regular', 'EnvyCodeR Nerd Font Mono', 'Hurmit Nerd Font Mono'",
-    "terminal.integrated.fontSize": 15,
-    "terminal.integrated.fontWeight": "normal",
+    "terminal.integrated.fontFamily": "'Maple Mono NF', 'Source Code Pro', 'IosevkaTerm Nerd Font Mono', 'EnvyCodeR Nerd Font Mono', 'Hurmit Nerd Font Mono', 'DaddyTimeMono Nerd Font Mono Regular', 'Oxygen Mono Regular', 'Google Sans Mono', 'agave Nerd Font Mono r', 'Source Code Pro', 'JetBrainsMono Nerd Font Mono'",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": "bold",
     // "terminal.integrated.fontWeightBold": "bold",
     "terminal.integrated.profiles.windows": {
         "Default Profile": {
