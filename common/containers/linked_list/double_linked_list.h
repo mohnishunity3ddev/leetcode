@@ -1,4 +1,4 @@
-#if !defined(DOUBLE_DOUBLE_LINKED_LIST_H)
+#if !defined(DOUBLE_LINKED_LIST_H)
 
 #include "defines.h"
 #include <iostream>
@@ -23,6 +23,7 @@ struct dll_node
     }
 };
 #define dnode dll_node<T>
+typedef dll_node<int> iDllNode;
 
 template <typename T>
 struct double_linked_list
@@ -186,6 +187,41 @@ struct double_linked_list
         // display();
     }
 
+    dnode *
+    getNode(int index)
+    {
+        if(index < 0 || index >= size) {
+            return nullptr;
+        }
+
+        if(index == 0) {
+            return head;
+        }
+        if(index == size - 1) {
+            return tail;
+        }
+        dnode *curr = head;
+        int count = 0;
+        while(curr != nullptr && count++ < index) {
+            curr = curr->next;
+        }
+        return curr;
+    }
+
+    dnode *
+    getMidNode(int start, int end, int *mid)
+    {
+        if(start < 0 || end >= size) {
+            std::cout << "Cannot get Mid node since the range was wrong!\n";
+            return nullptr;
+        }
+
+        int midIndex = start + ((end - start)/2);
+        dnode *result = getNode(midIndex);
+        *mid = midIndex;
+        return result;
+    }
+
     i32
     getCount()
     {
@@ -237,6 +273,8 @@ struct double_linked_list
         head = nullptr;
     }
 };
+
+typedef double_linked_list<int> iDll;
 
 void driver();
 void exampleWithRandoms();

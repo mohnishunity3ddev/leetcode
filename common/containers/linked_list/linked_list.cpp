@@ -22,7 +22,7 @@ exampleWithRandoms()
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-
+    
     std::uniform_int_distribution<int> distribution(1, 100);
     linked_list<i32> ll;
 

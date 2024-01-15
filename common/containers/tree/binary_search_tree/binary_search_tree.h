@@ -35,8 +35,8 @@ struct binary_search_tree_node
 
     ~binary_search_tree_node()
     {
-        std::cout << "BST Node desctructor called for value: " << val
-                  << " and at index " << arrIndex << ".\n";
+        // std::cout << "BST Node desctructor called for value: " << val
+        //           << " and at index " << arrIndex << ".\n";
     }
 };
 #define bstNode binary_search_tree_node
@@ -48,11 +48,11 @@ struct binary_search_tree
 {
     binary_search_tree() : root(nullptr) {}
     binary_search_tree(bstNode<T> *root) : root(root) {}
-    binary_search_tree(T *arr, int size) { construct(arr, size); }
+    binary_search_tree(T *arr, size_t size) { construct(arr, size); }
 
     ~binary_search_tree()
     {
-        std::cout << "BST destructor called!\n";
+        // std::cout << "BST destructor called!\n";
         clear();
     }
 
@@ -102,6 +102,24 @@ struct binary_search_tree
         return curr;
     }
 
+    bstNode<T> *
+    getNode(bstNode<T> *r, int item)
+    {
+        if(r == nullptr) {
+            return nullptr;
+        }
+
+        if(r->val == item) {
+            return r;
+        }
+
+        auto *t = getNode(r->left, item);
+        if(t == nullptr) {
+            t = getNode(r->right, item);
+        }
+
+        return t;
+    }
 
     void
     insert(T data)
@@ -235,18 +253,41 @@ struct binary_search_tree
             delete curr;
             curr = nullptr;
         }
+    }
 
+    void
+    inorder()
+    {
+        stack<bstNode<T> *> s{32};
+        auto *curr = this->root;
+        bool done = false;
+        std::cout << "Inorder traversal of the bst is: \n";
 
+        while(!done) {
+            while(curr != nullptr) {
+                s.push(curr);
+                curr = curr->left;
+            }
+
+            if(!s.isEmpty()) {
+                curr = s.pop();
+                std::cout << curr->val << ", ";
+                curr = curr->right;
+            } else {
+                done = true;
+            }
+        }
+        std::cout << std::endl;
     }
 
   private:
     bstNode<T> *root = nullptr;
 
     void
-    construct(T *arr, int size)
+    construct(T *arr, size_t size)
     {
         insert(arr[0]);
-        for(int i = 1; i < size; ++i) {
+        for(size_t i = 1; i < size; ++i) {
             insert(arr[i]);
         }
     }

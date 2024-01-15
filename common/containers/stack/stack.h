@@ -92,7 +92,6 @@ struct stack
         size = 0;
         capacity = 0;
         top = -1;
-        printf("Stack Destructor Called!\n");
     }
 };
 

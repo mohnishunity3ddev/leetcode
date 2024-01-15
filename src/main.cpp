@@ -6,6 +6,8 @@
 #include <containers/tree/binary_search_tree/binary_search_tree.h>
 #include <containers/linked_list/double_linked_list.h>
 
+#include <karumanchi/tree/binary_search_tree/09.are_bsts_equal.h>
+
 using namespace std;
 
 struct test{
@@ -106,16 +108,6 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 int
 main()
 {
-    double_linked_list<int> dll{};
-
-    for (int i = 0; i < 10; ++i) {
-        dll.add(i);
-    }
-    dll.addAt(4, 510);
-    dll.display();
-    dll.removeAt(4);
-    dll.display();
-    dll.displayReverse();
-
+    areBstsEqual_test();
     int x = 0;
 }

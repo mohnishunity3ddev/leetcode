@@ -42,11 +42,27 @@ struct myRand
         return result;
     }
 
-    i32 next(int l, int r) {
-        int d = r - l;
+    i32 next(int inclusiveL, int exclusiveR) {
+        int d = exclusiveR - inclusiveL;
+        if (d <= 0) {
+            d = 1;
+        }
         i32 rand = next();
-        i32 result = l + (rand % d);
+        i32 result = inclusiveL + (rand % d);
         return result;
+    }
+
+    std::vector<int>
+    getUniqueRandomSequence(int min, int max, int maxDiff = 1)
+    {
+        std::vector<int> sequence;
+        for (int i = min; i <= max; i += maxDiff)
+        {
+            sequence.push_back(i);
+        }
+
+        std::shuffle(sequence.begin(), sequence.end(), gen);
+        return sequence;
     }
 };
 
