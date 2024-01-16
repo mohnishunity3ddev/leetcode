@@ -6,7 +6,7 @@
 #include <containers/tree/binary_search_tree/binary_search_tree.h>
 #include <containers/linked_list/double_linked_list.h>
 
-#include <karumanchi/tree/binary_search_tree/09.are_bsts_equal.h>
+#include <karumanchi/tree/binary_search_tree/08.range_printer.h>
 
 using namespace std;
 
@@ -108,6 +108,6 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 int
 main()
 {
-    areBstsEqual_test();
+    rangePrinter_test();
     int x = 0;
 }

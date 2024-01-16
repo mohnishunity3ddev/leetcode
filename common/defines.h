@@ -1,6 +1,7 @@
 #if !defined(DEFINES_H)
 
 #include <random>
+#include <algorithm>
 
 #define ARRAY_SIZE(arr) sizeof((arr))/sizeof((arr)[0])
 

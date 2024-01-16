@@ -264,7 +264,7 @@ struct binary_tree
         // complete binary-tree
         // int arr[] = {8, 3, 5, 4, 9, 7, 2};
         // complete binary-tree
-        int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, NULL, 301, NULL, NULL, 601, 701};
+        int arr[] = {8, 3, 5, 4, 9, 7, 2, 101, 0, 301, 0, 0, 601, 701};
         // int arr[] = {8};
 
         // left-skewed tree

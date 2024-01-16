@@ -66,7 +66,7 @@ struct stack
             if(displayMsg) {
                 printf("The Stack is empty!\n");
             }
-            return NULL;
+            return 0;
         }
         T result = items[top--];
         size--;
