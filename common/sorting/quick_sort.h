@@ -1,6 +1,7 @@
 #if !defined(quick_sort_h)
 
 #include <defines.h>
+#include <containers/stack/stack.h>
 
 // NOTE: This routine partitions the array into two, where the partitioned array
 // to left is smaller than the pivot element, and the one to the right are
@@ -57,6 +58,77 @@ quicksort(i32 *arr, i32 low, i32 high)
     i32 p = partition(arr, low, high);
     quicksort(arr, low, p);
     quicksort(arr, p + 1, high);
+}
+
+struct interval {
+    i32 low;
+    i32 high;
+
+    bool
+    operator==(const interval &b)
+    {
+        return low == b.low && high == b.high;
+    }
+};
+
+void
+iterativeQuicksort(i32 *arr, i32 low, i32 high)
+{
+    if(high <= low) return;
+
+    interval range{low, high};
+    interval invalidInterval{-1, -1};
+    stack<interval> _stack{32, invalidInterval};
+    _stack.push(range);
+
+    while(!_stack.isEmpty()) {
+        interval currentRange = _stack.pop();
+        if(currentRange == invalidInterval) {
+            std::cout << "Received invalid interval! please check!\n";
+            break;
+        }
+
+        i32 partitionIndex = partition(arr, currentRange.low, currentRange.high);
+
+        if(partitionIndex > currentRange.low) {
+            _stack.push({currentRange.low, partitionIndex});
+        }
+        if(partitionIndex + 1 < currentRange.high) {
+            _stack.push({partitionIndex + 1, currentRange.high});
+        }
+    }
+}
+
+#define VERIFY_SORTED_ARRAY(arr, size)                                         \
+    {                                                                          \
+        for (int i = 1; i < size; ++i)                                         \
+        {                                                                      \
+            if (arr[i] < arr[i - 1])                                           \
+            {                                                                  \
+                ASSERT(!"Array is not sorted");                                \
+            }                                                                  \
+        }                                                                      \
+    }
+
+void
+quicksort_test()
+{
+    int numTests = 1000;
+    for (int i = 0; i < numTests; ++i)
+    {
+        int arrSize = Rand.next(600'000, 700'000);
+        int *arr = new int[arrSize];
+        for (int i = 0; i < arrSize; ++i)
+        {
+            arr[i] = Rand.next(1, 700'000);
+        }
+
+        iterativeQuicksort(arr, 0, arrSize);
+        VERIFY_SORTED_ARRAY(arr, arrSize);
+
+        std::cout << "End of test " << i+1 << ".\n";
+        delete[] arr;
+    }
 }
 
 #define quick_sort_h

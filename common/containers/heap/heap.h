@@ -170,11 +170,13 @@ void
 heapTest()
 {
 
-    int numTests = 1000;
+    int numTests = 1;
+    int countItems = 0;
     for (int i = 0; i < numTests; ++i)
     {
 #if 1
-        int arrSize = Rand.next(500000, 1000000);
+        // int arrSize = Rand.next(500000, 1000000);
+        int arrSize = 1'000'000'000;
         int *arr = new int[arrSize];
         for (int i = 0; i < arrSize; ++i)
         {
@@ -222,6 +224,9 @@ heapTest()
         }
         // std::cout << std::endl;
         std::cout << "End of test " << (i + 1) << ".\n";
+        countItems += arrSize;
+        std::cout << "Counter Value: " << countItems << ".'\n";
+        delete[] arr;
     }
 }
 

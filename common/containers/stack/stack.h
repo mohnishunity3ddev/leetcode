@@ -13,17 +13,19 @@ struct stack
     i32 top = -1;
     i32 capacity = 0;
     i32 size = 0;
+    T invalidValue;
 
   public:
-    stack(i32 reserveCapacity)
+    stack(i32 reserveCapacity, T invalidVal)
     {
         items = new T[reserveCapacity];
+        this->invalidValue = invalidVal;
         top = -1;
         size = 0;
         capacity = reserveCapacity;
     }
 
-    stack() : stack(1) {}
+    stack(T invalidVal) : stack(1, invalidVal) {}
 
     void
     push(T item)
@@ -66,7 +68,7 @@ struct stack
             if(displayMsg) {
                 printf("The Stack is empty!\n");
             }
-            return 0;
+            return invalidValue;
         }
         T result = items[top--];
         size--;
@@ -98,7 +100,7 @@ struct stack
 void
 driver()
 {
-    stack<i32> myStack;
+    stack<i32> myStack{32, 1 << 31};
     myStack.push(-12);
     myStack.push(100);
     myStack.push(-100);

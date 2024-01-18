@@ -7,12 +7,13 @@
 #include <containers/linked_list/double_linked_list.h>
 
 #include <containers/heap/heap.h>
+#include <sorting/quick_sort.h>
 
 using namespace std;
 
 int
 main()
 {
-    heapTest();
+    quicksort_test();
     int x = 0;
 }
