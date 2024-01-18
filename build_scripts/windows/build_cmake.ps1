@@ -30,8 +30,10 @@ if($t1 -eq $cwd) {
 # build using cmake
 Set-Location $BIN_DIR_PATH
 if(!$is_release) {
+    Write-Alert "Building Debug build..."
     cmake -DUSE_DEBUG=ON -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -S $PROJECT_ROOT_DIR_PATH -B . -GNinja
 } else {
+    Write-Alert "Building Release build..."
     cmake -DUSE_DEBUG=OFF -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release -S $PROJECT_ROOT_DIR_PATH -B . -GNinja
 }
 

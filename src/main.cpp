@@ -6,7 +6,7 @@
 #include <containers/tree/binary_search_tree/binary_search_tree.h>
 #include <containers/linked_list/double_linked_list.h>
 
-#include <karumanchi/tree/binary_search_tree/08.range_printer.h>
+#include <containers/heap/heap.h>
 
 using namespace std;
 
@@ -108,6 +108,6 @@ printRootToItemPath(binary_tree_node<int> *root, int item)
 int
 main()
 {
-    rangePrinter_test();
+    heapTest();
     int x = 0;
 }
