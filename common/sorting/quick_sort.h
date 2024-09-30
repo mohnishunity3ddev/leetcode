@@ -120,10 +120,11 @@ quicksort_test()
         int *arr = new int[arrSize];
         for (int i = 0; i < arrSize; ++i)
         {
-            arr[i] = Rand.next(1, 700'000);
+            arr[i] = Rand.next(-600'000, 700'000);
         }
 
-        iterativeQuicksort(arr, 0, arrSize);
+        // iterativeQuicksort(arr, 0, arrSize);
+        quicksort(arr, 0, arrSize);
         VERIFY_SORTED_ARRAY(arr, arrSize);
 
         std::cout << "End of test " << i+1 << ".\n";

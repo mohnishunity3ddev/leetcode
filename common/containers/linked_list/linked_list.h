@@ -171,9 +171,20 @@ struct linked_list
         p->next = c->next;
         delete n;
         size--;
+    }
 
-        // std::cout << "removed " << val << "\n";
-        // display();
+    void
+    remove2(T val)
+    {
+        node **ind = &head;
+
+        while ((*ind)->value != val)
+            ind = &((*ind)->next);
+
+        node *e = *ind;
+        *ind = e->next;
+        delete e;
+        size--;
     }
 
     i32

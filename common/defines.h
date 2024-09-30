@@ -31,7 +31,7 @@ struct myRand
     std::mt19937 gen;
     std::uniform_int_distribution<i32> distribution;
     int min, max;
-
+    
     myRand() = delete;
     myRand(int min, int max) : min(min), max(max) {
         gen = std::mt19937(rd());
