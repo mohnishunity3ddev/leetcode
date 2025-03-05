@@ -1,17 +1,21 @@
 {
-    "editor.fontFamily": "'comic code ligatures regular', 'pragmatapro mono liga', 'maple mono nf', 'comic mono', 'comic code demo regular', 'Google Sans Mono','Oxygen Mono Regular','JetBrainsMono Nerd Font Mono','CaskaydiaCove NF Mono','IosevkaTerm Nerd Font Mono', 'agave Nerd Font Mono r'",
-    "editor.fontSize": 14,
+    "editor.fontFamily": "'sf mono', 'comic code ligatures', Monaco, 'SF Mono'",
+    "editor.fontSize": 15,
     "editor.fontLigatures": true,
     "editor.fontWeight": "normal",
-    "editor.fontVariations": true,
-    "editor.minimap.enabled": false,
-    // "editor.letterSpacing": 1,
-    "terminal.integrated.fontFamily": "'Maple Mono NF', 'Source Code Pro', 'IosevkaTerm Nerd Font Mono', 'EnvyCodeR Nerd Font Mono', 'Hurmit Nerd Font Mono', 'DaddyTimeMono Nerd Font Mono Regular', 'Oxygen Mono Regular', 'Google Sans Mono', 'agave Nerd Font Mono r', 'Source Code Pro', 'JetBrainsMono Nerd Font Mono'",
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.fontWeight": "bold",
-    // "terminal.integrated.fontWeightBold": "bold",
+
+    "editor.cursorStyle": "block",
+
+    // for mac users
+    "clangd.path": "/opt/homebrew/Cellar/llvm/19.1.7/bin/clangd",
+
+    // for windows users
+    // "clangd.path": "C:\\Program Files\\LLVM\\bin\\clangd.exe",
+
+
+    "terminal.integrated.shellIntegration.enabled": true,
     "terminal.integrated.profiles.windows": {
-        "Default Profile": {
+        "Default Profile Win": {
             "path": [
                 "C:\\Users\\h33t9\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe"
             ],
@@ -22,104 +26,55 @@
             ]
         }
     },
-    "terminal.integrated.defaultProfile.windows": "Default Profile",
-    // "terminal.integrated.profiles.linux": {
-    //     "Mani": {
-    //         "path": "/usr/bin/zsh",
-    //         "args": ["--init-file", "source ${workspaceFolder}/build_scripts/linux/set_aliases.sh"]
-    //     }
-    // },
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.env.linux": {
-        "ZSH_INIT_COMMAND": "source ${workspaceFolder}/build_scripts/linux/set_aliases.sh"
+    "terminal.integrated.defaultProfile.windows": "Default Profile Win",
+    "terminal.integrated.profiles.linux": {
+        "Default Profile Linux": {
+            "path": "/bin/bash",
+            "args": [
+                "--rcfile",
+                "${workspaceFolder}/build_scripts/linux/set_aliases.sh"
+            ]
+        }
     },
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "files.associations": {
-        "chrono": "cpp",
-        "system_error": "cpp",
-        "xlocale": "cpp",
-        "vector": "cpp",
-        "algorithm": "cpp",
-        "any": "cpp",
-        "array": "cpp",
-        "atomic": "cpp",
-        "bit": "cpp",
-        "bitset": "cpp",
-        "cctype": "cpp",
-        "charconv": "cpp",
-        "cinttypes": "cpp",
-        "clocale": "cpp",
-        "cmath": "cpp",
-        "codecvt": "cpp",
-        "compare": "cpp",
-        "concepts": "cpp",
-        "condition_variable": "cpp",
-        "cstdarg": "cpp",
-        "cstddef": "cpp",
-        "cstdint": "cpp",
-        "cstdio": "cpp",
-        "cstdlib": "cpp",
-        "cstring": "cpp",
-        "ctime": "cpp",
-        "cwchar": "cpp",
-        "deque": "cpp",
-        "exception": "cpp",
-        "forward_list": "cpp",
-        "list": "cpp",
-        "map": "cpp",
-        "set": "cpp",
-        "string": "cpp",
-        "unordered_map": "cpp",
-        "unordered_set": "cpp",
-        "format": "cpp",
-        "fstream": "cpp",
-        "functional": "cpp",
-        "initializer_list": "cpp",
-        "iomanip": "cpp",
-        "ios": "cpp",
-        "iosfwd": "cpp",
-        "iostream": "cpp",
-        "istream": "cpp",
-        "iterator": "cpp",
-        "limits": "cpp",
-        "locale": "cpp",
-        "memory": "cpp",
-        "mutex": "cpp",
-        "new": "cpp",
-        "numeric": "cpp",
-        "optional": "cpp",
-        "ostream": "cpp",
-        "queue": "cpp",
-        "random": "cpp",
-        "ratio": "cpp",
-        "regex": "cpp",
-        "sstream": "cpp",
-        "stack": "cpp",
-        "stdexcept": "cpp",
-        "stop_token": "cpp",
-        "streambuf": "cpp",
-        "thread": "cpp",
-        "tuple": "cpp",
-        "type_traits": "cpp",
-        "typeinfo": "cpp",
-        "utility": "cpp",
-        "variant": "cpp",
-        "xfacet": "cpp",
-        "xhash": "cpp",
-        "xiosbase": "cpp",
-        "xlocbuf": "cpp",
-        "xlocinfo": "cpp",
-        "xlocmes": "cpp",
-        "xlocmon": "cpp",
-        "xlocnum": "cpp",
-        "xloctime": "cpp",
-        "xmemory": "cpp",
-        "xstddef": "cpp",
-        "xstring": "cpp",
-        "xtr1common": "cpp",
-        "xtree": "cpp",
-        "xutility": "cpp",
-        "*.in": "cpp"
-    }
+    "terminal.integrated.defaultProfile.linux": "Default Profile Linux",
+
+    // for running alias script on terminal startup on mac, make sure the below lines are present zshrc
+    // if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    // local workspace_dir=$PWD
+    // if [[ -f "$workspace_dir/build_scripts/macos/set_aliases.zsh" ]]; then
+    //     source "$workspace_dir/build_scripts/macos/set_aliases.zsh"
+    // fi
+    // fi
+
+    // "workbench.colorTheme": "Xcode Classic (Dark)",
+    // "workbench.colorCustomizations": {
+    //     "activityBar.activeBackground": "#4d4d4d",
+    //     "activityBar.background": "#4d4d4d",
+    //     "activityBar.foreground": "#e7e7e7",
+    //     "activityBar.inactiveForeground": "#e7e7e799",
+    //     "activityBarBadge.background": "#308f30",
+    //     "activityBarBadge.foreground": "#e7e7e7",
+    //     "commandCenter.border": "#e7e7e799",
+    //     "sash.hoverBorder": "#4d4d4d",
+    //     "statusBar.background": "#343434",
+    //     "statusBar.foreground": "#e7e7e7",
+    //     "statusBarItem.hoverBackground": "#4d4d4d",
+    //     "statusBarItem.remoteBackground": "#343434",
+    //     "statusBarItem.remoteForeground": "#e7e7e7",
+    //     "titleBar.activeBackground": "#343434",
+    //     "titleBar.activeForeground": "#e7e7e7",
+    //     "titleBar.inactiveBackground": "#34343499",
+    //     "titleBar.inactiveForeground": "#e7e7e799",
+    //     "editor.lineHighlightBorder": "#D0FEEC00",
+    //     "editor.background": "#111111"
+    // },
+
+    "zenMode.fullScreen": true,
+    "zenMode.hideStatusBar": true,
+    "zenMode.showTabs": "single",
+    "zenMode.hideActivityBar": true,
+
+    "editor.bracketPairColorization.enabled": false,
+    "editor.minimap.enabled": false,
+    "C_Cpp.errorSquiggles": "enabled"
 }
