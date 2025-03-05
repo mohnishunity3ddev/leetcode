@@ -26,6 +26,14 @@
             ]
         },
         {
+            "name": "(MacOS) LLDB Launch",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/src/leetcode",
+            "args": [],
+            "cwd": "${fileDirname}",
+        },
+        {
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",

@@ -65,7 +65,7 @@ struct interval {
     i32 high;
 
     bool
-    operator==(const interval &b)
+    operator==(const interval &b) const
     {
         return low == b.low && high == b.high;
     }
