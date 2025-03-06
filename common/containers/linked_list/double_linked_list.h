@@ -116,7 +116,7 @@ struct double_linked_list
             c = c->next;
         }
         ASSERT(c != nullptr);
-        c->value = val;
+        c->val = val;
     }
 
     void
@@ -135,7 +135,7 @@ struct double_linked_list
         {
             dnode *n = head;
             head = head->next;
-            T value = n->value;
+            T value = n->val;
             delete n;
             size--;
             if (head == nullptr)
@@ -151,7 +151,7 @@ struct double_linked_list
             c = c->next;
         }
 
-        T val = c->value;
+        T val = c->val;
         dnode *n = c;
         c->prev->next = c->next;
         c->next->prev = c->prev;
@@ -165,7 +165,7 @@ struct double_linked_list
         dnode *c = head;
         dnode *p = c;
 
-        while (c != nullptr && c->value != val)
+        while (c != nullptr && c->val != val)
         {
             p = c;
             c = c->next;
@@ -241,7 +241,7 @@ struct double_linked_list
         dnode *c = head;
         while (c != nullptr)
         {
-            std::cout << " ==> " << c->value;
+            std::cout << " ==> " << c->val;
             c = c->next;
         }
         std::cout << " ==> end.\n\n";
@@ -253,7 +253,7 @@ struct double_linked_list
         std::cout << "the doubly linked list in reverse: \n";
         auto *ptr = this->tail;
         while (ptr != nullptr) {
-            std::cout << ptr->value << " ==> ";
+            std::cout << ptr->val << " ==> ";
             ptr = ptr->prev;
         }
         std::cout << "\n";

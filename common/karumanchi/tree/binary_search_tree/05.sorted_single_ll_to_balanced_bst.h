@@ -16,7 +16,7 @@ sortedListToBst(ll_node<int> **llNode, int start, int end)
     int mid = start + (end - start) / 2;
     iBstNode *leftChild = sortedListToBst(llNode, start, mid-1);
 
-    iBstNode *parent = new iBstNode((*llNode)->value, leftChild, nullptr);
+    iBstNode *parent = new iBstNode((*llNode)->val, leftChild, nullptr);
 
     (*llNode) = (*llNode)->next;
     parent->right = sortedListToBst(llNode, mid+1, end);

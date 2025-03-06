@@ -35,7 +35,7 @@ class solution {
 
         while (curr != nullptr)
         {
-            stack.push(curr->value);
+            stack.push(curr->val);
             curr = curr->next;
         }
 

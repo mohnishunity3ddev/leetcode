@@ -59,7 +59,7 @@ radixSort(int *arr, int size)
             linked_list<int> *bucket = aux + i;
             while(bucket->head != nullptr)
             {
-                arr[j++] = bucket->head->value;
+                arr[j++] = bucket->head->val;
                 bucket->removeAt(0);
             }
         }

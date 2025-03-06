@@ -6,16 +6,16 @@
 template <typename T>
 struct ll_node
 {
-    T value;
+    T val;
     ll_node *next;
 
     ll_node(T  value) {
-        this->value = value;
+        this->val = value;
         this->next = nullptr;
     }
 
     ll_node(T val, ll_node *nextPtr) {
-        this->value = val;
+        this->val = val;
         this->next = nextPtr;
     }
 
@@ -24,6 +24,7 @@ struct ll_node
     }
 };
 #define node ll_node<T>
+typedef ll_node<int> ListNode;
 
 template <typename T>
 struct linked_list
@@ -105,7 +106,7 @@ struct linked_list
             c = c->next;
         }
         ASSERT(c != nullptr);
-        c->value = val;
+        c->val = val;
     }
 
     void
@@ -124,7 +125,7 @@ struct linked_list
         {
             node *n = head;
             head = head->next;
-            T value = n->value;
+            T value = n->val;
             delete n;
             size--;
             if(head == nullptr)
@@ -142,7 +143,7 @@ struct linked_list
             c = c->next;
         }
 
-        T val = c->value;
+        T val = c->val;
         node *n = c;
         p->next = c->next;
         delete n;
@@ -155,7 +156,7 @@ struct linked_list
         node *c = head;
         node *p = c;
 
-        while (c != nullptr && c->value != val)
+        while (c != nullptr && c->val != val)
         {
             p = c;
             c = c->next;
@@ -178,7 +179,7 @@ struct linked_list
     {
         node **ind = &head;
 
-        while ((*ind)->value != val)
+        while ((*ind)->val != val)
             ind = &((*ind)->next);
 
         node *e = *ind;
@@ -196,20 +197,20 @@ struct linked_list
     void
     display()
     {
-        if (isEmpty())
+        if (isEmpty() || !head)
         {
             std::cout << "the list is empty!\n";
             return;
         }
         // std::cout << "list with size " << size << " is ";
-        std::cout << "Head";
+        std::cout << '[';
         node *c = head;
         while (c != nullptr)
         {
-            std::cout << " ==> " << c->value;
+            std::cout << c->val << ", ";
             c = c->next;
         }
-        std::cout << " ==> end.\n\n";
+        std::cout << "\b\b]\n";
     }
 
     void

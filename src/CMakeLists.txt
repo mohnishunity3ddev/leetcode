@@ -9,7 +9,7 @@ if (MSVC)
     # warning level 4 and all warnings as errors
     add_compile_options(/W4 /WX)
 else()
-    if(UNIX)
+    if(UNIX OR APPLE)
         message("Using clang in linux")
 
         # Find clang executable and set it as compiler
@@ -26,16 +26,16 @@ else()
         add_compile_options(-Wall -Wextra -pedantic -Werror -Wunused-variable)
 
         # Enable clang ubsan when in debug mode
-        # message("Adding ubsan!")
+        message("Adding ubsan!")
         # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined)
-        # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=integer -fno-sanitize-recover=integer -fsanitize-coverage=inline-8bit-counters -O0)
-        # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=nullability)
-        # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=implicit-conversion)
-        # # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=array-bounds)
-        # # add_compile_options(-fno-omit-frame-pointer)
-        # message("cmake linker flags: " ${CMAKE_EXE_LINKER_FLAGS})
-        set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -fsanitize=undefined,address,integer)
-        set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined,address,integer)
+        # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=integer -fno-sanitize-recover=integer -fsanitize-coverage=inline-8bit-counters -O0)
+        # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=nullability)
+        # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=implicit-conversion)
+        # set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=array-bounds)
+        add_compile_options(-fno-omit-frame-pointer)
+        message("cmake linker flags: " ${CMAKE_EXE_LINKER_FLAGS})
+        set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} -fsanitize=undefined,address,integer,implicit-conversion,nullability,array-bounds)
+        set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} -fsanitize=undefined,address,integer,implicit-conversion,nullability,array-bounds)
 
         # Add any other flags or options you need
         # For example, to disable sanitizer recovery:

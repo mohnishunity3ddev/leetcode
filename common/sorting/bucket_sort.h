@@ -36,7 +36,7 @@ bucketSort(int *arr, int size)
         auto *bucket = aux + auxIndex;
         while(bucket->head != nullptr)
         {
-            arr[i++] = bucket->head->value;
+            arr[i++] = bucket->head->val;
             bucket->removeAt(0);
         }
     }

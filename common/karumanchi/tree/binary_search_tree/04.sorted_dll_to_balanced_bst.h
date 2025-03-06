@@ -22,7 +22,7 @@ dllToBalancedBSt(iDll *dll, int start, int end)
     int mid = start + (end - start) / 2;
     iDllNode *dllNode = dll->getNode(mid);
 
-    iBstNode *treeNode = new iBstNode(dllNode->value);
+    iBstNode *treeNode = new iBstNode(dllNode->val);
     treeNode->left = dllToBalancedBSt(dll, start, mid - 1);
     treeNode->right = dllToBalancedBSt(dll, mid+1, end);
 
