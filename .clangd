@@ -22,6 +22,7 @@ CompileFlags:
     - -Wno-declaration-after-statement
     - -Wno-newline-eof
     - -Wno-invalid_decl_spec_combination
+    - -Wno-misc-definitions-in-headers
 
     # custom defines
     - -DFREELIST2_ALLOCATOR_IMPLEMENTATION

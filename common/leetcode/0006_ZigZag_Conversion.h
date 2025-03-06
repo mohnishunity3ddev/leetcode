@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-std::string zigzag_string_conversion(const std::string& s, int numRows) {
+inline std::string zigzag_string_conversion(const std::string& s, int numRows) {
     if (numRows == 1) return s;
     
     std::vector<std::array<char, 1024>> rows(numRows);

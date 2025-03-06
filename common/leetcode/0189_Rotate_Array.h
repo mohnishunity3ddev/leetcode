@@ -26,7 +26,7 @@ constexpr void rotate(vector<int>& nums, int k) {
     for (int i=0; i<k; ++i) nums[i] = aux[i];
 }
 
-void driver() {
+inline void driver() {
     vector<int> ints = {1,2,3,4,5,6,7};
     rotate(ints, 3);
 

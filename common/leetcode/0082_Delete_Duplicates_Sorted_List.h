@@ -2,7 +2,7 @@
 
 #include <containers/linked_list/linked_list.h>
 
-ListNode *deleteDuplicates(ListNode *head) {
+inline ListNode *deleteDuplicates(ListNode *head) {
     if (!head) return head;
 
     ListNode *pp = nullptr;
@@ -32,7 +32,7 @@ ListNode *deleteDuplicates(ListNode *head) {
     return head;
 }
 
-void driver() {
+inline void driver() {
     linked_list<int> ll;
     ll.add(1);
     ll.add(2);

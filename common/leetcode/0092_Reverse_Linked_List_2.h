@@ -2,7 +2,7 @@
 
 #include <containers/linked_list/linked_list.h>
 
-ListNode *
+inline ListNode *
 reverseBetween(ListNode *head, int left, int right)
 {
     if (left == right || head->next == nullptr) return head;

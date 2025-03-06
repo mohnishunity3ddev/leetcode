@@ -2,7 +2,7 @@
 
 #include <containers/linked_list/linked_list.h>
 
-ListNode *removeDuplicates(ListNode *head) {
+inline ListNode *removeDuplicates(ListNode *head) {
     if (!head) return head;
 
     ListNode *lastNode = head;

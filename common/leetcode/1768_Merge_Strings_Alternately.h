@@ -5,7 +5,7 @@
 #include <string_view>
 #include <vector>
 
-std::string mergeAlternately(std::string word1, std::string word2) {
+inline std::string mergeAlternately(std::string word1, std::string word2) {
     char ret[256];
     std::vector<std::string_view> words{word1, word2};
 
@@ -35,7 +35,7 @@ std::string mergeAlternately(std::string word1, std::string word2) {
     return std::string(ret);
 }
 
-void driver() {
+inline void driver() {
     std::string word1 = "ab", word2 = "pqrs";
     std::string w = mergeAlternately(word1, word2);
     std::cout << w << std::endl;

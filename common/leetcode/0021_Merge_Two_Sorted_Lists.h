@@ -2,7 +2,7 @@
 
 #include <containers/linked_list/linked_list.h>
 
-void printList(ListNode *h) {
+inline void printList(ListNode *h) {
     ListNode *c = h;
     std::cout << '[';
     while (c != nullptr) {
@@ -12,7 +12,7 @@ void printList(ListNode *h) {
     std::cout << "\b\b]\n";
 }
 
-ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
+inline ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
     ListNode dummy{3};
     ListNode *p = &dummy;
     while (list1 && list2) {
@@ -35,7 +35,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
     return dummy.next;
 }
 
-void driver() {
+inline void driver() {
     linked_list<int> list1;
     list1.add(1); list1.add(2); list1.add(4);
     printList(list1.head);

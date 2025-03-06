@@ -4,7 +4,7 @@
 #include <stack>
 #include <iostream>
 
-bool isValid(const std::string& s) {
+inline bool isValid(const std::string& s) {
     std::stack<char> cstack;
     int sz = s.size();
     for (int i = 0; i < sz; ++i) {
@@ -27,7 +27,7 @@ bool isValid(const std::string& s) {
     return cstack.empty();
 }
 
-void driver() {
+inline void driver() {
     std::string s = "(]";
     bool valid = isValid(s);
     std::cout << s << " is " << valid << std::endl;
